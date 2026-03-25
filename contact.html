@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | ROXEL INVEST</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        roxel: { blue: '#0a1128', gold: '#d4af37', dark: '#050814' }
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Mobile Menu Animation */
+        #mobile-menu {
+            transition: transform 0.4s ease-in-out;
+            transform: translateY(-100%);
+        }
+        #mobile-menu.open {
+            transform: translateY(0);
+        }
+    </style>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased overflow-x-hidden">
+<nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 py-6 px-6 lg:px-12 flex justify-between items-center text-white bg-roxel-blue shadow-lg">        <div class="flex items-center gap-3 cursor-pointer z-50">
+           <a href="index.html" class="flex items-center z-50">
+    <img src="./assets/img/LOGO.png" alt="ROXEL INVEST" class="h-20 md:h-22 lg:h-27 w-auto object-contain transition-transform duration-300 hover:scale-105">
+</a>
+        </div>
+
+        <ul class="hidden lg:flex gap-8 text-sm uppercase tracking-wider font-semibold">
+            <li><a href="index.html" class="hover:text-roxel-gold transition duration-300">Home</a></li>
+            <li><a href="about.html" class="hover:text-roxel-gold transition duration-300">About Us</a></li>
+            <li><a href="services.html" class="hover:text-roxel-gold transition duration-300">Services</a></li>
+            <li><a href="contact.html" class="text-roxel-gold border-b-2 border-roxel-gold pb-1">Contact</a></li>
+        </ul>
+
+        <button id="mobile-menu-btn" class="lg:hidden text-roxel-gold focus:outline-none z-50">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
+    </nav>
+ <div id="mobile-menu" class="fixed inset-0 bg-roxel-blue z-40 flex flex-col items-center justify-center">
+        <ul class="text-center space-y-8 text-xl uppercase tracking-widest font-serif">
+            <li><a href="index.html" class="text-white hover:text-roxel-gold transition duration-300 block">Home</a></li>
+            <li><a href="about.html" class="text-roxel-gold block">About Us</a></li>
+            <li><a href="index.html#services" class="text-white hover:text-roxel-gold transition duration-300 block">Services</a></li>
+            <li><a href="contact.html" class="text-white hover:text-roxel-gold transition duration-300 block">Contact</a></li>
+        </ul>
+    </div>
+
+    <header class="pt-32 pb-16 bg-roxel-blue relative overflow-hidden">
+       <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1516455207990-7a48ce5c8d53?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center animate-zoom"></div>
+
+<div class="container mx-auto px-6 max-w-7xl relative z-10 text-center">
+    <h1 class="font-serif text-5xl md:text-6xl text-white font-bold mb-4 header-animate delay-1">
+        Get in <span class="text-roxel-gold italic">Touch</span>
+    </h1>
+    
+    <div class="w-16 h-1 bg-roxel-gold mx-auto mb-6 snake-line-animate"></div>
+    
+    <p class="text-gray-300 text-lg max-w-2xl mx-auto font-light header-animate delay-3">
+        Discuss your next real estate investment with our experts.
+    </p>
+</div>
+    </header>
+
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6 max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-16">
+            
+            <div class="reveal">
+                <h3 class="font-serif text-3xl text-roxel-blue font-bold mb-6">Our Headquarters</h3>
+                <p class="text-gray-600 leading-relaxed mb-10">We invite you to visit our offices in Cyprus or reach out to us via phone or email for any inquiries regarding our properties and investment opportunities.</p>
+                
+               <div class="space-y-6 md:space-y-8">
+    <div class="flex items-center gap-4 reveal">
+        <div class="w-12 h-12 md:w-14 md:h-14 border border-roxel-gold text-roxel-gold flex items-center justify-center rounded-sm text-xl md:text-2xl transition duration-300 hover:bg-roxel-gold hover:text-roxel-blue">
+            <i class="fa-solid fa-location-dot"></i>
+        </div>
+        <div class="flex-1">
+            <h4 class="font-serif font-bold text-roxel-blue text-lg md:text-xl">Headquarters</h4>
+            <p class="text-gray-600 text-sm md:text-base leading-relaxed">Archiepiskopou Makariou III, Limassol, Cyprus</p>
+        </div>
+    </div>
+
+    <div class="flex items-center gap-4 reveal delay-100">
+        <div class="w-12 h-12 md:w-14 md:h-14 border border-roxel-gold text-roxel-gold flex items-center justify-center rounded-sm text-xl md:text-2xl transition duration-300 hover:bg-roxel-gold hover:text-roxel-blue">
+            <i class="fa-solid fa-phone"></i>
+        </div>
+        <div class="flex-1">
+            <h4 class="font-serif font-bold text-roxel-blue text-lg md:text-xl">Phone</h4>
+            <p class="text-gray-600 text-sm md:text-base leading-relaxed">+357 25 000 000</p>
+        </div>
+    </div>
+
+    <div class="flex items-center gap-4 reveal delay-200">
+        <div class="w-12 h-12 md:w-14 md:h-14 border border-roxel-gold text-roxel-gold flex items-center justify-center rounded-sm text-xl md:text-2xl transition duration-300 hover:bg-roxel-gold hover:text-roxel-blue">
+            <i class="fa-solid fa-envelope"></i>
+        </div>
+        <div class="flex-1">
+            <h4 class="font-serif font-bold text-roxel-blue text-lg md:text-xl">Email</h4>
+            <p class="text-gray-600 text-sm md:text-base leading-relaxed hover:text-roxel-gold transition">info@roxelinvest.com</p>
+        </div>
+    </div>
+</div>
+
+                <div class="mt-10 w-full h-64 bg-gray-200 border border-gray-300">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d104523.55169992561!2d32.96472483864197!3d34.69466858525046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14e73303c27d4ca7%3A0xc3124ce80a424294!2sLimassol%2C%20Cyprus!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 p-10 border border-gray-200 shadow-xl reveal delay-100">
+                <h3 class="font-serif text-2xl text-roxel-blue font-bold mb-6">Send an Inquiry</h3>
+                <form action="#" method="POST" class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-semibold text-roxel-blue mb-2">Full Name</label>
+                        <input type="text" class="w-full px-4 py-3 border border-gray-300 focus:outline-none focus:border-roxel-gold focus:ring-1 focus:ring-roxel-gold transition" placeholder="John Doe">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-roxel-blue mb-2">Email Address</label>
+                        <input type="email" class="w-full px-4 py-3 border border-gray-300 focus:outline-none focus:border-roxel-gold focus:ring-1 focus:ring-roxel-gold transition" placeholder="john@example.com">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-roxel-blue mb-2">Phone Number</label>
+                        <input type="tel" class="w-full px-4 py-3 border border-gray-300 focus:outline-none focus:border-roxel-gold focus:ring-1 focus:ring-roxel-gold transition" placeholder="+357 ...">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-roxel-blue mb-2">Message</label>
+                        <textarea rows="4" class="w-full px-4 py-3 border border-gray-300 focus:outline-none focus:border-roxel-gold focus:ring-1 focus:ring-roxel-gold transition" placeholder="How can we help you?"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-roxel-blue text-roxel-gold font-bold uppercase tracking-widest py-4 hover:bg-roxel-gold hover:text-roxel-blue transition duration-300">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+<footer class="bg-roxel-dark text-white pt-16 pb-8 border-t-4 border-roxel-gold">
+    <div class="container mx-auto px-6 max-w-7xl grid grid-cols-1 md:grid-cols-3 gap-12 mb-12 reveal">
+        
+        <div>
+            <h4 class="font-serif text-2xl font-bold text-roxel-gold mb-4">ROXEL INVEST</h4>
+            <p class="text-gray-400 text-sm leading-relaxed mb-6">Building tomorrow's landmarks today. Your trusted partner in luxury real estate.</p>
+        </div>
+        
+        <div>
+            <h4 class="font-serif text-lg font-bold mb-6">Contact Info</h4>
+            <div class="space-y-4">
+                
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 border border-roxel-gold text-roxel-gold flex items-center justify-center rounded-sm text-lg transition duration-300 hover:bg-roxel-gold hover:text-roxel-blue">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-serif font-bold text-white text-base">Address</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">Archiepiskopou Makariou III, Limassol</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 border border-roxel-gold text-roxel-gold flex items-center justify-center rounded-sm text-lg transition duration-300 hover:bg-roxel-gold hover:text-roxel-blue">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-serif font-bold text-white text-base">Phone</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">+357 25 000 000</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 border border-roxel-gold text-roxel-gold flex items-center justify-center rounded-sm text-lg transition duration-300 hover:bg-roxel-gold hover:text-roxel-blue">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-serif font-bold text-white text-base">Email</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed hover:text-roxel-gold transition">info@roxelinvest.com</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+        <div>
+            <h4 class="font-serif text-lg font-bold mb-6">Connect With Us</h4>
+            <div class="flex gap-4">
+                <a href="#" class="w-10 h-10 rounded-full border border-roxel-gold flex items-center justify-center text-roxel-gold text-lg hover:bg-roxel-gold hover:text-roxel-blue transition duration-300">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full border border-roxel-gold flex items-center justify-center text-roxel-gold text-lg hover:bg-roxel-gold hover:text-roxel-blue transition duration-300">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full border border-roxel-gold flex items-center justify-center text-roxel-gold text-lg hover:bg-roxel-gold hover:text-roxel-blue transition duration-300">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="text-center text-gray-500 text-sm border-t border-gray-800 pt-8 reveal">
+        &copy; 2026 Roxel Invest. All rights reserved.
+    </div>
+</footer>
+    <script src="assets/js/main.js"></script>
+   
+</body>
+</html>

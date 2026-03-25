@@ -1,0 +1,131 @@
+/* Custom Utilities & Animations */
+html { 
+    scroll-behavior: smooth; 
+}
+
+/* Hero Background Parallax */
+.bg-hero {
+    background-image: linear-gradient(rgba(10, 17, 40, 0.4), rgba(10, 17, 40, 0.8)), url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Smooth Reveal Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.9s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Service Card Image Zoom Effect */
+.service-card img {
+    transition: transform 0.7s ease;
+}
+
+.service-card:hover img {
+    transform: scale(1.1);
+}
+/* --- Header Specific Animations --- */
+
+/* 1. Slow Continuous Background Zoom (Ken Burns Effect) */
+@keyframes slowZoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.15); }
+}
+.animate-zoom {
+    animation: slowZoom 20s ease-in-out infinite alternate;
+}
+
+/* 2. Staggered Text Entrance */
+@keyframes fadeInUpStaggered {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+.header-animate {
+    opacity: 0; /* يبدأ مخفياً */
+    animation: fadeInUpStaggered 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* تأخير ظهور العناصر لعمل تسلسل حركي */
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+/* Specific Line Expand Animation (from center outwards) */
+@keyframes expandLineFromCenter {
+    0% { opacity: 0; transform: scaleX(0); }
+    100% { opacity: 1; transform: scaleX(1); }
+}
+.line-animate {
+    opacity: 0; /* starts hidden */
+    transform-origin: center; /* crucial for central expansion */
+    animation: expandLineFromCenter 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+/* --- Snake Line Drop Animation --- */
+@keyframes dropAndSnake {
+    0% {
+        opacity: 0;
+        /* يبدأ من الأعلى يميناً (موقع كلمة Excellence تقريباً) ويكون قصيراً جداً */
+        transform: translate(120px, -60px) scaleX(0.1); 
+    }
+    25% {
+        opacity: 1;
+        /* ينزل عمودياً للأسفل بشكل مستقيم */
+        transform: translate(120px, 0) scaleX(0.1); 
+    }
+    50% {
+        /* يزحف بقوة نحو اليسار مع بدء زيادة طوله */
+        transform: translate(-40px, 0) scaleX(0.4); 
+    }
+    75% {
+        /* يتموج عائداً نحو اليمين */
+        transform: translate(20px, 0) scaleX(0.8); 
+    }
+    100% {
+        opacity: 1;
+        /* يستقر في موقعه الأصلي في المنتصف بحجمه الكامل */
+        transform: translate(0, 0) scaleX(1); 
+    }
+}
+
+.snake-line-animate {
+    opacity: 0;
+    /* مدة الحركة ثانيتين لتبدو ناعمة وواضحة */
+    animation: dropAndSnake 2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    /* تأخير بسيط ليبدأ الخط بالنزول بعد ظهور الكلمة */
+    animation-delay: 0.6s; 
+}
+/* --- Home Page Hero Animations --- */
+
+/* 1. Cinematic Blur & Scale Reveal */
+@keyframes cinematicReveal {
+    0% { 
+        opacity: 0; 
+        transform: scale(1.1) translateY(30px); 
+        filter: blur(12px); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: scale(1) translateY(0); 
+        filter: blur(0); 
+    }
+}
+.hero-cinematic {
+    opacity: 0;
+    animation: cinematicReveal 1.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* 2. Gentle Golden Pulse for the Button */
+@keyframes goldenPulse {
+    0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.5); }
+    70% { box-shadow: 0 0 0 20px rgba(212, 175, 55, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+}
+.btn-pulse {
+    animation: goldenPulse 2.5s infinite;
+}
