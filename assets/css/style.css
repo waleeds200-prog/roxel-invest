@@ -5,7 +5,7 @@ html {
 
 /* Hero Background Parallax */
 .bg-hero {
-    background-image: linear-gradient(rgba(10, 17, 40, 0.4), rgba(10, 17, 40, 0.8)), url('../assets/img/main.jpg');
+    background-image: linear-gradient(rgba(10, 17, 40, 0.4), rgba(10, 17, 40, 0.8)), url('./assets/img/main.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
