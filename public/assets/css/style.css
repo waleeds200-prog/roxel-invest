@@ -1,0 +1,577 @@
+/* Custom Utilities & Animations */
+html { 
+    scroll-behavior: smooth; 
+}
+
+/* Hero Background Parallax */
+.bg-hero {
+    background-image: linear-gradient(rgba(10, 17, 40, 0.4), rgba(10, 17, 40, 0.8)), url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Smooth Reveal Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.9s cubic-bezier(0.5, 0, 0, 1);
+}
+.sticky-section img {
+    will-change: transform; /* يخبر المتصفح بتحسين أداء المحرك للصور */
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Service Card Image Zoom Effect */
+.service-card img {
+    transition: transform 0.7s ease;
+}
+
+.service-card:hover img {
+    transform: scale(1.1);
+}
+/* --- Header Specific Animations --- */
+
+/* 1. Slow Continuous Background Zoom (Ken Burns Effect) */
+@keyframes slowZoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.15); }
+}
+.animate-zoom,
+.animate-slow-zoom img,
+.animate-slow-zoom video {
+    animation: slowZoom 20s ease-in-out infinite alternate;
+}
+.animate-slow-zoom video {
+    object-fit: cover;
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+/* 2. Staggered Text Entrance */
+@keyframes fadeInUpStaggered {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+.header-animate {
+    opacity: 0; /* يبدأ مخفياً */
+    animation: fadeInUpStaggered 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* تأخير ظهور العناصر لعمل تسلسل حركي */
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+/* Specific Line Expand Animation (from center outwards) */
+@keyframes expandLineFromCenter {
+    0% { opacity: 0; transform: scaleX(0); }
+    100% { opacity: 1; transform: scaleX(1); }
+}
+.line-animate {
+    opacity: 0; /* starts hidden */
+    transform-origin: center; /* crucial for central expansion */
+    animation: expandLineFromCenter 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+/* --- Snake Line Drop Animation --- */
+@keyframes dropAndSnake {
+    0% {
+        opacity: 0;
+        /* يبدأ من الأعلى يميناً (موقع كلمة Excellence تقريباً) ويكون قصيراً جداً */
+        transform: translate(120px, -60px) scaleX(0.1); 
+    }
+    25% {
+        opacity: 1;
+        /* ينزل عمودياً للأسفل بشكل مستقيم */
+        transform: translate(120px, 0) scaleX(0.1); 
+    }
+    50% {
+        /* يزحف بقوة نحو اليسار مع بدء زيادة طوله */
+        transform: translate(-40px, 0) scaleX(0.4); 
+    }
+    75% {
+        /* يتموج عائداً نحو اليمين */
+        transform: translate(20px, 0) scaleX(0.8); 
+    }
+    100% {
+        opacity: 1;
+        /* يستقر في موقعه الأصلي في المنتصف بحجمه الكامل */
+        transform: translate(0, 0) scaleX(1); 
+    }
+}
+
+.snake-line-animate {
+    opacity: 0;
+    /* مدة الحركة ثانيتين لتبدو ناعمة وواضحة */
+    animation: dropAndSnake 2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    /* تأخير بسيط ليبدأ الخط بالنزول بعد ظهور الكلمة */
+    animation-delay: 0.6s; 
+}
+/* --- Home Page Hero Animations --- */
+
+
+/* Hero overlays for cinematic look */
+.hero-overlay {
+    position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(180deg, rgba(10,17,40,0.18), rgba(10,17,40,0.45));
+    z-index: 20;
+}
+.hero-tint {
+    position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(180deg, rgba(212,175,55,0.04), rgba(10,17,40,0.18));
+    mix-blend-mode: soft-light;
+    z-index: 22;
+}
+.hero-darker-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.18); pointer-events: none; z-index: 24; }
+.hero-mute-btn { position: absolute; right: 1rem; bottom: 1.25rem; z-index: 60; }
+
+.olea-control-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    flex: 1 1 auto;
+    padding: 0.65rem 0.6rem;
+    border-radius: 9999px;
+    border: 1px solid #dde3ea;
+    background: #f7f9fc;
+    color: #36506d;
+    font-size: clamp(0.68rem, 1.8vw, 0.8rem);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.25;
+    word-break: break-word;
+    white-space: normal; /* السماح بالتفاف الكلمة إذا لزم الأمر في الشاشات الضيقة جداً */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(15, 43, 75, 0.04);
+}
+
+.olea-control-btn:hover,
+.olea-control-btn.active {
+    background: linear-gradient(135deg, #c7a24b, #e8cb7f);
+    border-color: #c7a24b;
+    color: #0f2b4b;
+    box-shadow: 0 8px 20px rgba(199, 162, 75, 0.25);
+    transform: translateY(-1px);
+}
+
+.lightbox-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 110;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.16);
+    color: #ffffff;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+    font-size: 1.15rem;
+    transition: all 0.2s ease;
+}
+.lightbox-nav-btn {
+    width: 2.25rem !important;
+    height: 2.25rem !important;
+    font-size: 0.9rem !important;
+    background: rgba(255, 255, 255, 0.85) !important;
+}
+
+@media (min-width: 640px) {
+    .overlay-style-btn {
+        padding: 0.45rem 0.85rem;
+        letter-spacing: 0.1em;
+        flex: 0 1 auto;
+    }
+    .lightbox-nav-btn {
+        width: 3rem !important;
+        height: 3rem !important;
+        font-size: 1.15rem !important;
+    }
+}
+.lightbox-nav-btn-dark {
+    background: rgba(255,255,255,0.95);
+    color: #111111;
+    border-color: rgba(17,17,17,0.12);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+}
+.lightbox-nav-btn:hover {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-50%) scale(1.04);
+}
+.lightbox-nav-btn-dark:hover {
+    background: rgba(255,255,255,1);
+    transform: translateY(-50%) scale(1.04);
+}
+
+@media (max-width: 991px) {
+    .olea-room-btn {
+        flex-basis: calc(50% - 0.5rem);
+    }
+}
+
+@media (max-width: 767px) {
+    .olea-control-btn {
+        flex: 1 1 calc(50% - 0.5rem);
+        min-width: unset;
+        width: calc(50% - 0.25rem);
+        padding: 0.68rem 0.7rem;
+        font-size: 0.68rem;
+        letter-spacing: 0.12em;
+    }
+    .olea-room-btn {
+        flex-basis: calc(50% - 0.25rem);
+    }
+    .lightbox-nav-btn {
+        width: 2.75rem;
+        height: 2.75rem;
+        font-size: 1rem;
+    }
+}
+.design-room-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.design-room-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 30px rgba(15, 43, 75, 0.08);
+}
+.design-room-image {
+    transition: transform 0.6s ease;
+}
+.design-room-card:hover .design-room-image {
+    transform: scale(1.04);
+}
+
+/* 1. Cinematic Blur & Scale Reveal */
+@keyframes cinematicReveal {
+    0% { 
+        opacity: 0; 
+        transform: scale(1.1) translateY(30px); 
+        filter: blur(12px); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: scale(1) translateY(0); 
+        filter: blur(0); 
+    }
+}
+.hero-cinematic {
+    opacity: 0;
+    animation: cinematicReveal 1.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* 2. Gentle Golden Pulse for the Button */
+@keyframes goldenPulse {
+    0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.5); }
+    70% { box-shadow: 0 0 0 20px rgba(212, 175, 55, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+}
+.btn-pulse {
+    animation: goldenPulse 2.5s infinite;
+}
+/* لضمان أن الشعار يظل دائماً فوق الأقسام التي تليه */
+#navbar img {
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
+    pointer-events: auto; /* لضمان إمكانية الضغط على الشعار */
+}
+
+/* إضافة مساحة علوية للصفحات لتعويض بروز الشعار */
+body {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* تأكد أن أول قسم في صفحاتك يمتلك Pt-40 كحد أدنى */
+section:first-of-type {
+    padding-top: 10rem; /* يعادل pt-40 تقريباً */
+}
+
+/* إخفاء شريط التمرير الأفقي مع الإبقاء على خاصية السحب للموبايل */
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.hide-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+/* Luxury Glass Card (for text under image) */
+.glass-card {
+    background: rgba(10, 17, 40, 0.55);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+    border-radius: 24px;
+}
+
+/* Subtle gold divider */
+.gold-divider {
+    height: 1px;
+    width: 80px;
+    margin: 1.5rem auto;
+    background: linear-gradient(to right, transparent, linear-gradient(135deg, #C5A25D, #E6C97A), transparent);
+}
+
+/* Premium vignette overlay */
+.vignette {
+    background: radial-gradient(ellipse at center,
+        rgba(0,0,0,0) 0%,
+        rgba(0,0,0,0.35) 70%,
+        rgba(0,0,0,0.6) 100%);
+}
+
+@keyframes luxuryFadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+        letter-spacing: 0.05em;
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        letter-spacing: normal;
+    }
+}
+
+/* إضافة منظور (Perspective) للهيدر لتمكين الحركة ثلاثية الأبعاد للبطاقة */
+    .perspective {
+        perspective: 1000px;
+    }
+
+  /* البطاقة الزجاجية النظيفة */
+.glass-card-dark {
+    background: rgba(8, 23, 44, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    /* تم مسح border-right من هنا */
+}
+
+@media (max-width: 767px) {
+    .glass-card-dark {
+        border-top: 1px solid rgba(212, 175, 55, 0.15);
+        min-height: 50vh; 
+    }
+}
+
+/* حالة العناصر قبل الظهور (مخفية ومزاحة للأسفل قليلاً) */
+.reveal-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* حالة العناصر بعد الظهور (يتم إضافتها عبر JS) */
+.reveal-item.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* --- تأثير القص المائل (Clip Path) --- */
+
+/* نطبقه فقط على شاشات الديسكتوب والتابلت */
+/* 2. تحديث زوايا القص لتكون مثالية مع التصميم المتراكب الجديد */
+/* --- أجهزة التابلت والآيباد (iPad Mini & Pro) --- */
+/* من 768 بيكسل إلى 1023 بيكسل: نعطي ميلاناً هادئاً (70%) ليترك مساحة واسعة للأزرار */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .clip-diagonal-right {
+        clip-path: polygon(0% 0%, 100% 0%, 75% 100%, 0% 100%);
+        -webkit-clip-path: polygon(0% 0%, 100% 0%, 75% 100%, 0% 100%);
+        filter: drop-shadow(4px 0px 0px rgba(212, 175, 55, 0.25));
+    }
+}
+
+/* --- شاشات الكمبيوتر واللابتوب (Desktops) --- */
+/* من 1024 بيكسل فما فوق: نعود للميلان الحاد والفخم جداً (45%) */
+@media (min-width: 1024px) {
+    .clip-diagonal-right {
+        clip-path: polygon(0% 0%, 100% 0%, 45% 100%, 0% 100%);
+        -webkit-clip-path: polygon(0% 0%, 100% 0%, 45% 100%, 0% 100%);
+        filter: drop-shadow(4px 0px 0px rgba(212, 175, 55, 0.25));
+    }
+}
+
+/* للموبايل: نلغي تأثير القص لضمان وضوح النص وتعبئته للشاشة */
+@media (max-width: 767px) {
+    .clip-diagonal-right {
+        clip-path: none;
+        -webkit-clip-path: none;
+        margin-right: 0;
+    }
+}
+
+
+/* --- حركة الزوم البطيئة المستمرة (Slow Zoom Effect) --- */
+
+@keyframes slowZoom {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.1); /* زوم خفيف بنسبة 10% فقط للحفاظ على الفخامة */
+    }
+}
+
+.animate-slow-zoom img {
+    /* الحركة مدتها 15 ثانية، مستمرة، وبتأثير linear لتبدو ناعمة */
+    animation: slowZoom 15s linear infinite alternate;
+    will-change: transform; /* تحسين الأداء */
+}
+:root { --nav-height: 72px; } /* اضبط حسب ارتفاع الهيدر الفعلي */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-height);
+  z-index: 60; /* فوق الفيديو */
+  background: rgba(8,23,44,0.5); /* شفافية خفيفة + خلفية لتقليل التداخل */
+  backdrop-filter: blur(6px);
+}
+.hero-section {
+  margin-top: var(--nav-height); /* يدفع الفيديو لأسفل تحت الهيدر */
+  position: relative;
+  z-index: 10;
+}
+.hero-section video {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  display: block;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0); /* تسريع إسقاط GPU */
+}
+
+/* Olea gallery explorer */
+.olea-thumb-btn {
+   transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.olea-thumb-btn:hover {
+   transform: translateY(-2px);
+   border-color: #c7a24b;
+}
+
+.olea-room-btn {
+   cursor: pointer;
+   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.olea-room-btn:hover {
+   transform: translateX(2px);
+   box-shadow: 0 8px 24px rgba(15, 43, 75, 0.08);
+}
+/* تنسيق أزرار الأنماط العائمة على الصورة */
+/* تنسيق أزرار الأنماط العائمة على الصورة وفي وضع الشاشة الكبير Lightbox */
+.overlay-style-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.35rem 0.65rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    font-size: clamp(0.58rem, 1.8vw, 0.72rem);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.1;
+    white-space: nowrap; /* إجبار الكلمة على البقاء في سطر واحد داخل الزر */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    flex: 1 1 auto; /* السماح للزر بالتقلص والتمدد بمرونة داخل الشريط */
+    min-width: 0;
+}
+
+.overlay-style-btn:hover,
+.overlay-style-btn.active {
+    background: #d8c17b;
+    border-color: #d8c17b;
+    color: #0f2b4b;
+    box-shadow: 0 4px 15px rgba(216, 193, 123, 0.4);
+    transform: translateY(-1px);
+}
+#olea-main-image {
+    will-change: transform, opacity;
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* حالة الاختفاء أثناء التبديل: تلاشٍ ناعم مع تكبير طفيف جداً */
+#olea-main-image.is-transitioning {
+    opacity: 0.15;
+    transform: scale(1.04);
+}
+/* =========================================================
+   أزرار التنقل الجانبية على الصورة الرئيسية (Next / Prev Arrows)
+   ========================================================= */
+.olea-nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(0, 0, 0, 0.45);
+    color: #ffffff;
+    font-size: 0.9rem;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    opacity: 0.75;
+}
+
+/* تكبير الزر وجعله ذهبياً عند التحويم */
+.olea-nav-arrow:hover {
+    opacity: 1;
+    background: #d8c17b;
+    border-color: #d8c17b;
+    color: #0f2b4b;
+    transform: translateY(-50%) scale(1.08);
+    box-shadow: 0 4px 15px rgba(216, 193, 123, 0.4);
+}
+
+@media (min-width: 768px) {
+    .olea-nav-arrow {
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.1rem;
+        opacity: 0; /* إخفائها على الشاشات الكبيرة حتى يمرر المستخدم الماوس فوق الصورة */
+    }
+    .group:hover .olea-nav-arrow {
+        opacity: 1;
+    }
+}
+/* =========================================================
+   حماية الكبسولة السفلية في الـ Lightbox للموبايل
+   ========================================================= */
+#lightbox-footer {
+    /* رفع الكبسولة بمقدار 12% أو 3rem عن أسفل الشاشة لحمايتها من شريط النظام Home Bar */
+    bottom: clamp(2rem, 6vh, 3rem);
+}
+
+@media (min-width: 640px) {
+    #lightbox-footer {
+        bottom: 2rem;
+    }
+}
+/* تأثير التدرج المحيطي لشاشة الهيرو السينمائية */
+.bg-radial-vignette {
+    background: radial-gradient(circle at center, transparent 30%, rgba(11, 19, 32, 0.75) 100%);
+}

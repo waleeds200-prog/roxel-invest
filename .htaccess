@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+    
+    # تحديد مسار القاعدة الأساسي (مهم جداً في public_html)
+    RewriteBase /
+    
+    # توجيه الطلبات إلى مجلد public
+    RewriteCond %{REQUEST_URI} !^/public/ [NC]
+    RewriteRule ^(.*)$ public/$1 [L,NC]
+</IfModule>

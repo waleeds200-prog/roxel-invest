@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1000" role="presentation">
+  <defs>
+    <linearGradient id="mobileArrowGold" x1="0" y1="1" x2="0.92" y2="0.06">
+      <stop offset="0" stop-color="#d5a84b" stop-opacity="0.34"/>
+      <stop offset="0.58" stop-color="#d5a84b" stop-opacity="0.52"/>
+      <stop offset="1" stop-color="#d5a84b" stop-opacity="0.64"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#mobileArrowGold)" d="M-34 1018C105 927 217 790 323 625C399 507 465 401 511 305L430 292L597 72L584 349L532 315C484 421 425 533 351 652C237 835 132 962 12 1035Z"/>
+</svg>
