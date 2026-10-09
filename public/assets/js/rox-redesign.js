@@ -18,13 +18,17 @@
     const spotlightPlay = document.querySelector('.collection-video__play');
     if (spotlightVideo && spotlightPlay) {
         const originalPoster = spotlightVideo.poster;
+        let spotlightStarted = false;
         const syncPoster = () => {
             spotlightVideo.poster = mobileArtwork.matches ? spotlightVideo.dataset.mobilePoster : originalPoster;
         };
         syncPoster();
         mobileArtwork.addEventListener('change', syncPoster);
         const updatePlayButton = () => {
-            spotlightPlay.hidden = !spotlightVideo.paused && !spotlightVideo.ended;
+            spotlightVideo.controls = !mobileArtwork.matches || spotlightStarted;
+            spotlightPlay.hidden = mobileArtwork.matches
+                ? spotlightStarted
+                : !spotlightVideo.paused && !spotlightVideo.ended;
             spotlightVideo.closest('.collection-video').classList.toggle('is-playing', !spotlightVideo.paused);
         };
         const playSpotlight = () => {
@@ -34,8 +38,12 @@
         spotlightPlay.addEventListener('click', playSpotlight);
         document.querySelector('.collection-video__caption')?.addEventListener('click', playSpotlight);
         ['play', 'pause', 'ended', 'error'].forEach((event) => {
-            spotlightVideo.addEventListener(event, updatePlayButton);
+            spotlightVideo.addEventListener(event, () => {
+                if (event === 'play') spotlightStarted = true;
+                updatePlayButton();
+            });
         });
+        mobileArtwork.addEventListener('change', updatePlayButton);
         updatePlayButton();
     }
 
