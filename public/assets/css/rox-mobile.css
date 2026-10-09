@@ -63,12 +63,12 @@
     body[class] { padding-top: 86px; }
     html { scroll-padding-top: 102px; }
     body[class] .site-header.is-scrolled { height: 72px; background: #10172df2; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
-    body[class] .site-header.is-scrolled .brand img { height: 60px; }
+    body[class] .site-header.is-scrolled .brand img { height: 70px; }
     body[class] .site-header.is-hidden { transform: translateY(-110%); pointer-events: none; }
     body[class] .site-header:has(:focus-visible) { transform: none; pointer-events: auto; transition: none; }
     body[class] .site-header__inner { position: static; width: var(--shell); height: 100%; display: flex; justify-content: space-between; gap: 16px; }
-    body[class] .brand { position: static; width: 56px; min-width: 0; max-width: none; margin: 0; }
-    body[class] .brand img { width: 56px !important; height: 70px; max-height: none !important; object-fit: contain; filter: none; }
+    body[class] .brand { position: static; width: 72px; min-width: 0; max-width: none; margin: 0; }
+    body[class] .brand img { width: 72px !important; height: 82px; max-height: none !important; object-fit: contain; filter: none; }
     body[class] .desktop-nav { display: none; }
     body[class] .menu-toggle { position: static; width: 44px; height: 44px; min-width: 44px; min-height: 44px; margin: 0 -8px 0 0; padding: 11px; display: flex; flex-direction: column; justify-content: center; gap: 5px; }
     body[class] .menu-toggle span { width: 24px; height: 2px; min-height: 2px; margin: 0; background: #b5b8bf; }

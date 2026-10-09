@@ -4509,14 +4509,14 @@ body.collection-lightbox-open { overflow: hidden; }
     }
     body[class] .site-header.is-scrolled .brand {
         position: static;
-        width: 76px !important;
+        width: 96px !important;
         min-width: 0 !important;
         max-width: none !important;
     }
     body[class] .site-header.is-scrolled .brand img {
-        width: 76px !important;
-        height: 64px !important;
-        max-height: 64px !important;
+        width: 96px !important;
+        height: 74px !important;
+        max-height: 74px !important;
         object-fit: contain;
     }
     body[class] .site-header.is-scrolled .desktop-nav {
