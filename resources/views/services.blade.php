@@ -76,7 +76,7 @@
     <div class="hero__content shell" data-reveal>
         <p class="hero__eyebrow">A Portfolio of Distinction.<br>From Concept to Landmark.</p>
         <h1>The <span>Collection</span></h1>
-        <p class="hero__intro">Our current €12 Million portfolio represents a diverse array of luxury living, seamlessly blending modern aesthetics with the rugged beauty of the Cypriot coastline.</p>
+        <p class="hero__intro"><span class="desktop-only">Our current €12 Million portfolio represents a diverse array of luxury living, seamlessly blending modern aesthetics with the rugged beauty of the Cypriot coastline.</span><span class="mobile-only">Our current €12 Million portfolio represents<br> a diverse array of luxury living, seamlessly<br> blending modern aesthetics with the rugged<br> beauty of the Cypriot coastline.</span></p>
     </div>
 </section>
 
@@ -90,7 +90,7 @@
         </div>
 
         <div class="collection-video">
-            <video controls playsinline preload="metadata" tabindex="0" poster="{{ asset('assets/img/Olea Mare/Styles Photos/Night_Vibes/Night_Vibes_Outdoor.webp') }}" aria-label="Olea Mare project video">
+            <video controls playsinline preload="metadata" tabindex="0" poster="{{ asset('assets/img/Olea Mare/Styles Photos/Night_Vibes/Night_Vibes_Outdoor.webp') }}" data-mobile-poster="{{ asset('assets/rox2026/images/mobile/olea-poster.webp') }}" aria-label="Olea Mare project video">
                 <source src="{{ asset('assets/video/Olea_Mare.mp4') }}" type="video/mp4">
                 Your browser does not support embedded video.
                 <a href="{{ asset('assets/video/Olea_Mare.mp4') }}">Watch the Olea Mare video</a>.
@@ -98,10 +98,13 @@
             <button class="collection-video__play" type="button" aria-label="Play Olea Mare video" hidden>
                 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5v14l11-7z" /></svg>
             </button>
+            <button class="mobile-only collection-video__caption" type="button" aria-label="Watch the Olea Mare film">
+                <strong>Explore Olea Mare</strong><span>WATCH THE FILM</span>
+            </button>
         </div>
 
         <div class="section-heading section-heading--center" data-reveal>
-            <h2 id="projects-title">Projects</h2>
+            <h2 id="projects-title"><span class="desktop-only">Projects</span><span class="mobile-only">Explore our projects</span></h2>
             <div class="title-rule" aria-hidden="true"></div>
         </div>
 
@@ -109,27 +112,29 @@
             <article class="project-card" data-gallery="city-panorama" data-reveal>
                 <div class="project-card__image">
                     <button type="button" class="project-card__gallery-trigger" aria-label="Open City Panorama image gallery">
-                        <img src="{{ asset('assets/img/City_Panorama/city1.webp') }}" alt="City Panorama residence" loading="lazy" decoding="async">
+                        <picture><source media="(max-width: 560px)" srcset="{{ asset('assets/rox2026/images/mobile/city.webp') }}"><img src="{{ asset('assets/img/City_Panorama/city1.webp') }}" alt="City Panorama residence" loading="lazy" decoding="async"></picture>
                     </button>
                     <button type="button" class="project-card__heart" aria-label="Save City Panorama" aria-pressed="false">♡</button>
                 </div>
                 <div class="project-card__body">
                     <p class="project-card__type">Project Selection</p>
                     <div class="project-card__title-row"><h3>City Panorama</h3><span class="segmented-rule segmented-rule--flex" aria-hidden="true"></span></div>
-                    <p>A boutique collection of sea-view apartments in the most sought-after neighbourhood in the Paphos district, characterised by open-plan fluidity and seamless indoor-outdoor transitions.</p>
+                    <p class="desktop-only">A boutique collection of sea-view apartments in the most sought-after neighbourhood in the Paphos district, characterised by open-plan fluidity and seamless indoor-outdoor transitions.</p>
+                    <p class="mobile-only">A boutique collection of sea-view villas in the most sought-after neighbourhood in the Paphos district, characterised by open-plan fluidity and seamless indoor-outdoor transitions.</p>
                     <p class="project-card__status"><span>Status:</span> Available</p>
                     <h4>Key Features:</h4>
                     <ul>
                         <li>216.90 m² Total Built Area Per Floor</li>
                         <li>1,106.30 m² Total Building Area</li>
                     </ul>
+                    <button class="mobile-only button project-card__details" type="button" aria-label="View City Panorama details">View Details <span aria-hidden="true">&rarr;</span></button>
                 </div>
             </article>
 
             <article class="project-card" data-gallery="olea-mare" data-reveal>
                 <div class="project-card__image">
                     <button type="button" class="project-card__gallery-trigger" aria-label="Open Olea Mare image gallery">
-                        <img src="{{ asset('assets/img/Olea Mare/Styles Photos/Modern/Modern_Living_Room.webp') }}" alt="Olea Mare luxury living room" loading="lazy" decoding="async">
+                        <picture><source media="(max-width: 560px)" srcset="{{ asset('assets/rox2026/images/mobile/olea.webp') }}"><img src="{{ asset('assets/img/Olea Mare/Styles Photos/Modern/Modern_Living_Room.webp') }}" alt="Olea Mare luxury living room" loading="lazy" decoding="async"></picture>
                     </button>
                     <button type="button" class="project-card__heart" aria-label="Save Olea Mare" aria-pressed="false">♡</button>
                 </div>
@@ -144,13 +149,14 @@
                         <li>Total Covered Area: 398 m²</li>
                         <li>Top-of-the-line equipment and interior finishes</li>
                     </ul>
+                    <button class="mobile-only button project-card__details" type="button" aria-label="View Olea Mare details">View Details <span aria-hidden="true">&rarr;</span></button>
                 </div>
             </article>
 
             <article class="project-card" data-gallery="amathos-residences" data-reveal>
                 <div class="project-card__image">
                     <button type="button" class="project-card__gallery-trigger" aria-label="Open Amathos Residences image gallery">
-                        <img src="{{ asset('assets/img/Amathos_Photos/AMATHOS_Photos_page-0001.webp') }}" alt="Amathos Residences exterior" loading="lazy" decoding="async">
+                        <picture><source media="(max-width: 560px)" srcset="{{ asset('assets/rox2026/images/mobile/amathos.webp') }}"><img src="{{ asset('assets/img/Amathos_Photos/AMATHOS_Photos_page-0001.webp') }}" alt="Amathos Residences exterior" loading="lazy" decoding="async"></picture>
                     </button>
                     <button type="button" class="project-card__heart" aria-label="Save Amathos Residences" aria-pressed="false">♡</button>
                 </div>
@@ -165,6 +171,7 @@
                         <li>Covered verandas 29 m²</li>
                         <li>Walking distance to the beach</li>
                     </ul>
+                    <button class="mobile-only button project-card__details" type="button" aria-label="View Amathos Residences details">View Details <span aria-hidden="true">&rarr;</span></button>
                 </div>
             </article>
         </div>

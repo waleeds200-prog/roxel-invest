@@ -6,6 +6,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 
 class ContactController extends Controller
@@ -23,17 +24,22 @@ class ContactController extends Controller
 
         $data = $request->validate([
             'first_name' => ['required', 'string', 'max:100'],
-            'last_name'  => ['required', 'string', 'max:100'],
-            'phone'      => ['nullable', 'string', 'max:40'],
-            'email'      => ['required', 'email', 'max:150'],
-            'interest'   => ['required', 'string', 'max:150'],
-            'message'    => ['required', 'string', 'max:3000'],
+            'last_name' => ['required', 'string', 'max:100'],
+            'phone' => ['nullable', 'string', 'max:40'],
+            'email' => ['required', 'email', 'max:150'],
+            'interest' => ['required', 'string', Rule::in([
+                'Investment Portfolio',
+                'Cyprus Permanent Residency',
+                'Bespoke Services',
+                'General Inquiry',
+            ])],
+            'message' => ['required', 'string', 'max:3000'],
         ]);
 
         try {
             Mail::send('emails.contact', ['inquiryData' => $data], function ($message) use ($data) {
                 $message->to(config('mail.roxel_inquiries_to', 'info@roxelinvest.com'))
-                    ->replyTo($data['email'], trim($data['first_name'] . ' ' . $data['last_name']))
+                    ->replyTo($data['email'], trim($data['first_name'].' '.$data['last_name']))
                     ->subject('Roxel Invest | New consultation request');
             });
 

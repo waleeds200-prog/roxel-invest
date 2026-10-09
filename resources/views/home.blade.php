@@ -20,6 +20,11 @@
     </div>
 </section>
 
+<div class="mobile-only mobile-home-actions shell">
+    <a class="button button--navy" href="{{ route('services') }}">Explore Collection <span aria-hidden="true">&rarr;</span></a>
+    <a class="button button--gold" href="#investment-growth">Investment ROI <span aria-hidden="true">&rarr;</span></a>
+</div>
+
 <section class="section section--light" id="collection-highlights">
     <div class="shell">
         <div class="section-heading section-heading--center" data-reveal>
@@ -29,34 +34,37 @@
             <p>Our current €12 Million portfolio represents a diverse array of luxury living, seamlessly blending modern aesthetics with the rugged beauty of the Cypriot coastline.</p>
         </div>
 
-        <div class="section-cta" data-reveal>
+        <div class="section-cta desktop-only" data-reveal>
             <a class="button button--navy" href="{{ route('services') }}">View All Projects <span>→</span></a>
         </div>
 
         <div class="home-projects">
             <article class="feature-project" data-reveal>
                 <div class="feature-project__media">
-                    <img src="{{ asset('assets/rox2026/images/coastal-sophistication.webp') }}" alt="Luxury coastal villa with swimming pool" loading="lazy" decoding="async">
+                    <picture><source media="(max-width: 560px)" srcset="{{ asset('assets/rox2026/images/mobile/coastal.webp') }}"><img src="{{ asset('assets/rox2026/images/coastal-sophistication.webp') }}" alt="Luxury coastal villa with swimming pool" loading="lazy" decoding="async"></picture>
                     <span class="vertical-tag vertical-tag--left">Limited Availability</span>
                 </div>
                 <div class="feature-project__copy">
                     <div class="feature-project__title-row"><h3>Coastal Sophistication</h3><span class="segmented-rule segmented-rule--flex" aria-hidden="true"></span></div>
                     <p>Boutique sea-front villas with unobstructed views, located minutes from elite marinas and championship golf courses.</p>
-                    <a href="{{ route('services') }}">Discovery <span>→</span></a>
+                    <a href="{{ route('services') }}"><span class="desktop-only">Discovery</span><span class="mobile-only">View Details</span> <span aria-hidden="true">→</span></a>
                 </div>
             </article>
 
             <article class="feature-project" data-reveal>
                 <div class="feature-project__media">
-                    <img src="{{ asset('assets/rox2026/images/city1.webp') }}" alt="Contemporary hillside apartment development" loading="lazy" decoding="async">
+                    <picture><source media="(max-width: 560px)" srcset="{{ asset('assets/rox2026/images/mobile/city.webp') }}"><img src="{{ asset('assets/rox2026/images/city1.webp') }}" alt="Contemporary hillside apartment development" loading="lazy" decoding="async"></picture>
                     <span class="vertical-tag vertical-tag--right">Under Development</span>
                 </div>
                 <div class="feature-project__copy">
                     <div class="feature-project__title-row"><h3>The Hillside Sanctuary</h3><span class="segmented-rule segmented-rule--flex" aria-hidden="true"></span></div>
                     <p>Strategically elevated to capture the cooling breezes of the Akamas foothills.</p>
-                    <a href="{{ route('services') }}">Discovery <span>→</span></a>
+                    <a href="{{ route('services') }}"><span class="desktop-only">Discovery</span><span class="mobile-only">View Details</span> <span aria-hidden="true">→</span></a>
                 </div>
             </article>
+        </div>
+        <div class="section-cta mobile-only" data-reveal>
+            <a class="button button--navy" href="{{ route('services') }}">View All Projects <span>→</span></a>
         </div>
     </div>
 </section>
@@ -96,7 +104,7 @@
 <section class="section eu-gateway">
     <div class="shell eu-gateway__grid">
         <figure class="eu-gateway__image" data-reveal>
-            <img src="{{ asset('assets/rox2026/images/surfer-hq.webp') }}" alt="Surfer on a Mediterranean wave" loading="lazy">
+            <picture><source media="(max-width: 560px)" srcset="{{ asset('assets/rox2026/images/mobile/surfer.webp') }}"><img src="{{ asset('assets/rox2026/images/surfer-hq.webp') }}" alt="Surfer on a Mediterranean wave" loading="lazy" decoding="async"></picture>
         </figure>
         <div class="eu-gateway__copy" data-reveal>
             <h2>Gateway to the European Union</h2>

@@ -12,7 +12,7 @@
     <div class="hero__content shell" data-reveal>
         <p class="hero__eyebrow">Beyond Real Estate</p>
         <h1>The Bespoke Experience</h1>
-        <p class="hero__intro">We take care of everything, so you don't have to. A curated<br>concierge and after-sales service designed for our elite clientele.</p>
+        <p class="hero__intro"><span class="desktop-only">We take care of everything, so you don't have to. A curated<br>concierge and after-sales service designed for our elite clientele.</span><span class="mobile-only">We take care of everything, so you don't have<br> to. A curated concierge and after-sales service<br> designed for our elite clientele.</span></p>
     </div>
 </section>
 
@@ -29,6 +29,7 @@
                 <span class="service-card__icon" aria-hidden="true">
                     <img src="{{ asset('assets/rox2026/icons/bespoke-property-management.svg') }}" alt="">
                 </span>
+                <p class="mobile-only mobile-section-label">01 / Curated Service</p>
                 <h3>Property Management</h3>
                 <p>From tenant sourcing to full-scale maintenance, our dedicated property management arm ensures your investment remains pristine and highly lucrative, completely hands-free.</p>
             </article>
@@ -37,6 +38,7 @@
                 <span class="service-card__icon" aria-hidden="true">
                     <img src="{{ asset('assets/rox2026/icons/bespoke-interior-partnerships.svg') }}" alt="">
                 </span>
+                <p class="mobile-only mobile-section-label">02 / Curated Service</p>
                 <h3>Interior Design Partnerships</h3>
                 <p>We collaborate with Europe's finest interior design studios to furnish your home. Turnkey solutions that blend Mediterranean aesthetics with uncompromising luxury.</p>
             </article>
@@ -45,6 +47,7 @@
                 <span class="service-card__icon" aria-hidden="true">
                     <img src="{{ asset('assets/rox2026/icons/bespoke-legal-residency.svg') }}" alt="">
                 </span>
+                <p class="mobile-only mobile-section-label">03 / Curated Service</p>
                 <h3>Legal &amp; Residency</h3>
                 <p>Seamless navigation of the Cyprus Permanent Residency (PR) program. Our in-house legal experts handle all administrative, tax, and residency paperwork on your behalf.</p>
             </article>
@@ -52,7 +55,7 @@
 
         <div class="concierge" data-reveal>
             <figure class="concierge__media">
-                <img src="{{ asset('assets/rox2026/images/bespoke-art.png') }}" alt="Abstract blue, magenta and red light artwork" loading="lazy" decoding="async">
+                <picture><source media="(max-width: 560px)" srcset="{{ asset('assets/rox2026/images/mobile/bespoke-art.webp') }}"><img src="{{ asset('assets/rox2026/images/bespoke-art.png') }}" alt="Abstract blue, magenta and red light artwork" loading="lazy" decoding="async"></picture>
             </figure>
             <div class="concierge__copy">
                 <span class="outline-label">Uncompromising Service</span>

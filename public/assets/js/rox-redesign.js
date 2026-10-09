@@ -1,14 +1,38 @@
 (() => {
+    const mobileArtwork = window.matchMedia('(max-width: 560px)');
+    const responsivePlaceholders = [...document.querySelectorAll('[data-mobile-placeholder]')].map((field) => ({
+        field,
+        original: field instanceof HTMLSelectElement ? field.options[0].textContent : field.getAttribute('placeholder'),
+    }));
+    const syncMobilePlaceholders = () => {
+        responsivePlaceholders.forEach(({ field, original }) => {
+            const value = mobileArtwork.matches ? field.dataset.mobilePlaceholder : original;
+            if (field instanceof HTMLSelectElement) field.options[0].textContent = value;
+            else field.setAttribute('placeholder', value);
+        });
+    };
+    syncMobilePlaceholders();
+    mobileArtwork.addEventListener('change', syncMobilePlaceholders);
+
     const spotlightVideo = document.querySelector('.collection-video video');
     const spotlightPlay = document.querySelector('.collection-video__play');
     if (spotlightVideo && spotlightPlay) {
+        const originalPoster = spotlightVideo.poster;
+        const syncPoster = () => {
+            spotlightVideo.poster = mobileArtwork.matches ? spotlightVideo.dataset.mobilePoster : originalPoster;
+        };
+        syncPoster();
+        mobileArtwork.addEventListener('change', syncPoster);
         const updatePlayButton = () => {
             spotlightPlay.hidden = !spotlightVideo.paused && !spotlightVideo.ended;
+            spotlightVideo.closest('.collection-video').classList.toggle('is-playing', !spotlightVideo.paused);
         };
-        spotlightPlay.addEventListener('click', () => {
+        const playSpotlight = () => {
             spotlightVideo.focus({ preventScroll: true });
             spotlightVideo.play().catch(updatePlayButton);
-        });
+        };
+        spotlightPlay.addEventListener('click', playSpotlight);
+        document.querySelector('.collection-video__caption')?.addEventListener('click', playSpotlight);
         ['play', 'pause', 'ended', 'error'].forEach((event) => {
             spotlightVideo.addEventListener(event, updatePlayButton);
         });
@@ -19,15 +43,19 @@
     const toggle = document.getElementById('menu-toggle');
     const close = document.getElementById('menu-close');
     const menu = document.getElementById('mobile-menu');
+    const backdrop = document.getElementById('menu-backdrop');
+    const pageRegions = [header, document.getElementById('main-content'), document.querySelector('.site-footer')];
     let menuReturnFocus = null;
 
     const setMenu = (open) => {
         if (!menu || !toggle) return;
         if (open) menuReturnFocus = document.activeElement;
         document.body.classList.toggle('menu-open', open);
+        if (open) header?.classList.remove('is-hidden');
         menu.classList.toggle('is-open', open);
         menu.setAttribute('aria-hidden', String(!open));
         menu.inert = !open;
+        pageRegions.forEach((region) => { if (region) region.inert = open; });
         toggle.setAttribute('aria-expanded', String(open));
         toggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
 
@@ -40,6 +68,7 @@
 
     toggle?.addEventListener('click', () => setMenu(!menu.classList.contains('is-open')));
     close?.addEventListener('click', () => setMenu(false));
+    backdrop?.addEventListener('click', () => setMenu(false));
     menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setMenu(false)));
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape' && menu?.classList.contains('is-open')) {
@@ -49,7 +78,7 @@
 
         if (event.key === 'Tab' && menu?.classList.contains('is-open')) {
             const focusable = [...menu.querySelectorAll('button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])')]
-                .filter((element) => !element.hasAttribute('inert'));
+                .filter((element) => !element.hasAttribute('inert') && element.getClientRects().length);
             if (!focusable.length) return;
             const first = focusable[0];
             const last = focusable[focusable.length - 1];
@@ -64,11 +93,57 @@
         }
     });
 
+    const scrollHeader = window.matchMedia('(max-width: 560px) and (min-height: 421px), (min-width: 1101px) and (min-height: 421px)');
+    const desktopScrollHeader = window.matchMedia('(min-width: 1101px) and (min-height: 421px)');
+    let lastHeaderScroll = Math.max(0, window.scrollY);
+    let headerScrollDistance = 0;
+    let headerScrollDirection = 0;
+    let headerFramePending = false;
+
     const updateHeader = () => {
-        header?.classList.toggle('is-scrolled', window.scrollY > 24);
+        if (!header) return;
+        const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+        const scrollPosition = Math.min(maxScroll, Math.max(0, window.scrollY));
+        header.classList.toggle('is-scrolled', scrollPosition > 24);
+        const keyboardFocus = header.contains(document.activeElement)
+            && document.activeElement.matches(':focus-visible');
+        if (!scrollHeader.matches || scrollPosition <= (desktopScrollHeader.matches ? 0 : 86)
+            || document.body.classList.contains('menu-open') || keyboardFocus) {
+            header.classList.remove('is-hidden');
+            headerScrollDistance = 0;
+            headerScrollDirection = 0;
+        } else {
+            const difference = scrollPosition - lastHeaderScroll;
+            const direction = Math.sign(difference);
+            if (direction && direction !== headerScrollDirection) headerScrollDistance = 0;
+            if (direction) headerScrollDirection = direction;
+            headerScrollDistance += Math.abs(difference);
+            // Desktop hides on the first downward movement, including slow scrolling.
+            // Keep the existing mobile threshold and accumulate upward movement to avoid flicker.
+            if (desktopScrollHeader.matches && direction > 0) {
+                header.classList.add('is-hidden');
+                headerScrollDistance = 0;
+            } else if (headerScrollDistance >= 24) {
+                header.classList.toggle('is-hidden', direction > 0 && scrollPosition > 120);
+                headerScrollDistance = 0;
+            }
+        }
+        lastHeaderScroll = scrollPosition;
+    };
+    const scheduleHeaderUpdate = () => {
+        if (headerFramePending) return;
+        headerFramePending = true;
+        window.requestAnimationFrame(() => {
+            headerFramePending = false;
+            updateHeader();
+        });
     };
     updateHeader();
-    window.addEventListener('scroll', updateHeader, { passive: true });
+    window.addEventListener('scroll', scheduleHeaderUpdate, { passive: true });
+    scrollHeader.addEventListener('change', updateHeader);
+    desktopScrollHeader.addEventListener('change', updateHeader);
+    header?.addEventListener('focusin', () => header.classList.remove('is-hidden'));
+
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {

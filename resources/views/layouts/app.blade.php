@@ -17,8 +17,11 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('assets/css/rox-redesign.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" media="(min-width: 561px)">
+    <link rel="stylesheet" href="{{ asset('assets/css/rox-redesign.css') }}?v={{ filemtime(public_path('assets/css/rox-redesign.css')) }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/rox-mobile.css') }}?v={{ filemtime(public_path('assets/css/rox-mobile.css')) }}" media="(max-width: 560px)">
+    <link rel="preload" as="font" href="{{ asset('assets/rox2026/fonts/avenir-medium-mobile.ttf') }}" type="font/ttf" crossorigin media="(max-width: 560px)">
+    <link rel="preload" as="font" href="{{ asset('assets/rox2026/fonts/PERB____.TTF') }}" type="font/ttf" crossorigin media="(max-width: 560px)">
     @stack('head')
 </head>
 <body class="@yield('body_class')">
@@ -31,11 +34,11 @@
             </a>
 
             <nav class="desktop-nav" aria-label="Primary navigation">
-                <a class="{{ request()->routeIs('home') ? 'is-active' : '' }}" href="{{ route('home') }}">Home</a>
-                <a class="{{ request()->routeIs('about') ? 'is-active' : '' }}" href="{{ route('about') }}">Our DNA</a>
-                <a class="{{ request()->routeIs('services') ? 'is-active' : '' }}" href="{{ route('services') }}">The Collection</a>
-                <a class="{{ request()->routeIs('bespoke') ? 'is-active' : '' }}" href="{{ route('bespoke') }}">Bespoke</a>
-                <a class="{{ request()->routeIs('contact') ? 'is-active' : '' }}" href="{{ route('contact') }}">Investor Relations</a>
+                <a class="{{ request()->routeIs('home') ? 'is-active' : '' }}" @if(request()->routeIs('home')) aria-current="page" @endif href="{{ route('home') }}">Home</a>
+                <a class="{{ request()->routeIs('about') ? 'is-active' : '' }}" @if(request()->routeIs('about')) aria-current="page" @endif href="{{ route('about') }}">Our DNA</a>
+                <a class="{{ request()->routeIs('services') ? 'is-active' : '' }}" @if(request()->routeIs('services')) aria-current="page" @endif href="{{ route('services') }}">The Collection</a>
+                <a class="{{ request()->routeIs('bespoke') ? 'is-active' : '' }}" @if(request()->routeIs('bespoke')) aria-current="page" @endif href="{{ route('bespoke') }}">Bespoke</a>
+                <a class="{{ request()->routeIs('contact') ? 'is-active' : '' }}" @if(request()->routeIs('contact')) aria-current="page" @endif href="{{ route('contact') }}">Investor Relations</a>
             </nav>
 
             <button class="menu-toggle" id="menu-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open navigation">
@@ -44,7 +47,8 @@
         </div>
     </header>
 
-    <aside class="mobile-menu" id="mobile-menu" aria-hidden="true" inert>
+    <div class="menu-backdrop" id="menu-backdrop" aria-hidden="true"></div>
+    <aside class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Site navigation" aria-modal="true" aria-hidden="true" inert>
         <button class="mobile-menu__close" id="menu-close" type="button" aria-label="Close navigation">×</button>
         <svg class="mobile-menu__motif" viewBox="0 0 1920 1081" preserveAspectRatio="none" aria-hidden="true" focusable="false">
             <path d="M174.583 1674.557 C174.583 1674.557 998.575 1371.729 1614.031 464.192 L1461.934 395.299 L1917.772 211.450 L1854.047 662.705 L1739.302 553.175 C1742.376 562.498 880.462 1567.522 174.583 1674.557 Z"/>
@@ -56,13 +60,12 @@
             </a>
 
             <div class="mobile-menu__content">
-                <p class="mobile-menu__eyebrow">Navigation</p>
-                <nav aria-label="Mobile navigation">
-                    <a class="{{ request()->routeIs('home') ? 'is-active' : '' }}" href="{{ route('home') }}"><span class="mobile-menu__number">01</span><span>Home</span><span class="mobile-menu__arrow" aria-hidden="true">&rarr;</span></a>
-                    <a class="{{ request()->routeIs('about') ? 'is-active' : '' }}" href="{{ route('about') }}"><span class="mobile-menu__number">02</span><span>Our DNA</span><span class="mobile-menu__arrow" aria-hidden="true">&rarr;</span></a>
-                    <a class="{{ request()->routeIs('services') ? 'is-active' : '' }}" href="{{ route('services') }}"><span class="mobile-menu__number">03</span><span>The Collection</span><span class="mobile-menu__arrow" aria-hidden="true">&rarr;</span></a>
-                    <a class="{{ request()->routeIs('bespoke') ? 'is-active' : '' }}" href="{{ route('bespoke') }}"><span class="mobile-menu__number">04</span><span>Bespoke</span><span class="mobile-menu__arrow" aria-hidden="true">&rarr;</span></a>
-                    <a class="{{ request()->routeIs('contact') ? 'is-active' : '' }}" href="{{ route('contact') }}"><span class="mobile-menu__number">05</span><span>Investor Relations</span><span class="mobile-menu__arrow" aria-hidden="true">&rarr;</span></a>
+                <nav aria-label="Site navigation">
+                    <a class="{{ request()->routeIs('home') ? 'is-active' : '' }}" @if(request()->routeIs('home')) aria-current="page" @endif href="{{ route('home') }}"><span>Home</span></a>
+                    <a class="{{ request()->routeIs('about') ? 'is-active' : '' }}" @if(request()->routeIs('about')) aria-current="page" @endif href="{{ route('about') }}"><span>Our DNA</span></a>
+                    <a class="{{ request()->routeIs('services') ? 'is-active' : '' }}" @if(request()->routeIs('services')) aria-current="page" @endif href="{{ route('services') }}"><span>The Collection</span></a>
+                    <a class="{{ request()->routeIs('bespoke') ? 'is-active' : '' }}" @if(request()->routeIs('bespoke')) aria-current="page" @endif href="{{ route('bespoke') }}"><span>Bespoke</span></a>
+                    <a class="{{ request()->routeIs('contact') ? 'is-active' : '' }}" @if(request()->routeIs('contact')) aria-current="page" @endif href="{{ route('contact') }}"><span>Investor Relations</span></a>
                 </nav>
 
                 <a class="mobile-menu__cta" href="{{ route('contact') }}">Schedule a Consultation <span aria-hidden="true">&rarr;</span></a>
@@ -72,7 +75,6 @@
                 <div>
                     <span>Direct Inquiries</span>
                     <a href="mailto:info@roxelinvest.com">info@roxelinvest.com</a>
-                    <a href="tel:+00000025357">+000 000 25 357</a>
                 </div>
                 <div>
                     <span>ROXEL INVEST</span>
@@ -96,11 +98,15 @@
                 <h3>Contact Info</h3>
                 <p>Archiepiskopou Makariou III, Limassol</p>
                 <a href="mailto:info@roxelinvest.com">info@roxelinvest.com</a>
+                <nav class="mobile-only footer-mobile-nav" aria-label="Footer navigation">
+                    <div><a href="{{ route('home') }}">Home</a> / <a href="{{ route('about') }}">Our DNA</a> / <a href="{{ route('services') }}">The Collection</a></div>
+                    <div><a href="{{ route('bespoke') }}">Bespoke</a> / <a href="{{ route('contact') }}">Investor Relations</a></div>
+                </nav>
             </div>
         </div>
     </footer>
 
-    <script src="{{ asset('assets/js/rox-redesign.js') }}" defer></script>
+    <script src="{{ asset('assets/js/rox-redesign.js') }}?v={{ filemtime(public_path('assets/js/rox-redesign.js')) }}" defer></script>
     @stack('scripts')
 </body>
 </html>
