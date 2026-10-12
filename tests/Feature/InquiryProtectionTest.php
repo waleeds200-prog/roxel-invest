@@ -22,7 +22,7 @@ test('valid Turnstile verification permits mail and does not expose its secret',
     Http::fake(['challenges.cloudflare.com/*' => Http::response(['success' => true, 'hostname' => 'roxelinvest.com', 'action' => 'contact'])]);
     Mail::shouldReceive('send')->once();
 
-    $this->get('/investor-relations')->assertOk()->assertSee('cf-turnstile', false)->assertDontSee('private-test-key');
+    $this->get('/investor-relations')->assertOk()->assertSee('inquiry-verification', false)->assertDontSee('private-test-key');
     $this->post('/investor-relations', inquiryPayload())->assertSessionHas('success');
     Http::assertSent(fn ($request) => $request['secret'] === 'private-test-key' && $request['response'] === 'valid-token');
 });

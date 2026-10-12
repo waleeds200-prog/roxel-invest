@@ -75,7 +75,7 @@
                 </label>
                 @if(config('inquiries.turnstile.enabled'))
                     @if(config('inquiries.turnstile.site_key') && config('inquiries.turnstile.secret_key'))
-                        <div class="cf-turnstile" data-sitekey="{{ config('inquiries.turnstile.site_key') }}" data-action="contact" data-size="compact" data-appearance="interaction-only" data-theme="light"></div>
+                        <div id="roxel-turnstile" class="inquiry-verification" data-sitekey="{{ config('inquiries.turnstile.site_key') }}" data-action="contact" data-language="en" data-theme="light"></div>
                     @else
                         <p class="field-error">Online inquiries are temporarily unavailable. Please email <a href="mailto:info@roxelinvest.com">info@roxelinvest.com</a>.</p>
                     @endif
@@ -106,6 +106,6 @@
 
 @if(config('inquiries.turnstile.enabled') && config('inquiries.turnstile.site_key') && config('inquiries.turnstile.secret_key'))
     @push('scripts')
-        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>
     @endpush
 @endif

@@ -1,4 +1,29 @@
 (() => {
+    const verification = document.getElementById('roxel-turnstile');
+    if (verification) {
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!window.turnstile) return;
+            let widgetId;
+            let widgetSize;
+            const renderVerification = () => {
+                const size = verification.clientWidth >= 300 ? 'normal' : 'compact';
+                if (widgetId !== undefined && widgetSize === size) return;
+                if (widgetId !== undefined) window.turnstile.remove(widgetId);
+                widgetSize = size;
+                widgetId = window.turnstile.render(verification, {
+                    sitekey: verification.dataset.sitekey,
+                    action: verification.dataset.action,
+                    language: verification.dataset.language,
+                    theme: verification.dataset.theme,
+                    size,
+                    appearance: 'interaction-only',
+                });
+            };
+            renderVerification();
+            new ResizeObserver(renderVerification).observe(verification);
+        });
+    }
+
     const mobileArtwork = window.matchMedia('(max-width: 560px)');
     const responsivePlaceholders = [...document.querySelectorAll('[data-mobile-placeholder]')].map((field) => ({
         field,
