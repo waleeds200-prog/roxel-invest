@@ -61,10 +61,11 @@ test('inquiry validation escapes retained user input and identifies the invalid 
 test('inquiry honeypot does not send mail and repeated submissions are throttled', function () {
     Mail::fake();
 
-    for ($attempt = 0; $attempt < 3; $attempt++) {
+    for ($attempt = 0; $attempt < 8; $attempt++) {
         $this->post('/investor-relations', ['b_website' => 'spam.example'])->assertRedirect();
     }
 
-    $this->post('/investor-relations', ['b_website' => 'spam.example'])->assertStatus(429);
+    $this->post('/investor-relations', ['b_website' => 'spam.example'])
+        ->assertRedirect('/investor-relations#inquiry-form')->assertSessionHas('error');
     Mail::assertNothingOutgoing();
 });

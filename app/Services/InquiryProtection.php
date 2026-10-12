@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use Illuminate\Contracts\Cache\LockTimeoutException;
+use Illuminate\Http\Exceptions\ThrottleRequestsException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
@@ -11,6 +12,8 @@ use Illuminate\Validation\ValidationException;
 
 class InquiryProtection
 {
+    private const CUSTOMER_DAILY_LIMIT = 8;
+
     public function verifyVisitor(Request $request): void
     {
         if (! config('inquiries.turnstile.enabled')) {
@@ -49,6 +52,7 @@ class InquiryProtection
     /** @param array<string, string|null> $data */
     public function reserve(array $data): string
     {
+        $customerKey = 'roxel:inquiries:customer:'.$this->fingerprint(strtolower(trim($data['email'])));
         $key = 'roxel:inquiries:duplicate:'.$this->fingerprint(json_encode([
             strtolower(trim($data['email'])),
             $data['interest'],
@@ -56,7 +60,17 @@ class InquiryProtection
         ], JSON_THROW_ON_ERROR));
 
         try {
-            return Cache::lock('roxel:inquiries:reservation', 10)->block(3, function () use ($key): string {
+            return Cache::lock('roxel:inquiries:reservation', 10)->block(3, function () use ($key, $customerKey): string {
+                $customer = Cache::get($customerKey, ['count' => 0, 'expires' => now()->timestamp + 86400]);
+                if ($customer['count'] >= self::CUSTOMER_DAILY_LIMIT) {
+                    throw new ThrottleRequestsException('Inquiry limit reached.', null, [
+                        'Retry-After' => max(1, $customer['expires'] - now()->timestamp),
+                        'X-RateLimit-Limit' => self::CUSTOMER_DAILY_LIMIT,
+                        'X-RateLimit-Remaining' => 0,
+                        'X-RateLimit-Reset' => $customer['expires'],
+                    ]);
+                }
+
                 if (Cache::has($key)) {
                     throw ValidationException::withMessages(['message' => 'This inquiry has already been submitted. Please wait before sending it again.']);
                 }
@@ -68,6 +82,8 @@ class InquiryProtection
                 }
 
                 Cache::put($key, true, (int) config('inquiries.duplicate_seconds'));
+                $customer['count']++;
+                Cache::put($customerKey, $customer, max(1, $customer['expires'] - now()->timestamp));
                 $window['count']++;
                 Cache::put('roxel:inquiries:daily', $window, max(1, $window['expires'] - now()->timestamp));
                 if ($window['count'] === $limit) {

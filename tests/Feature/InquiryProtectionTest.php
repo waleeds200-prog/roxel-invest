@@ -82,12 +82,12 @@ test('duplicate inquiries across IP addresses send only once and expire after te
 
 test('IP limit is shared by both endpoints and expires after twenty four hours', function () {
     Mail::fake();
-    for ($attempt = 0; $attempt < 3; $attempt++) {
+    for ($attempt = 0; $attempt < 8; $attempt++) {
         $this->post('/investor-relations', ['b_website' => 'spam'])->assertRedirect();
     }
-    $this->post('/contact', ['b_website' => 'spam'])->assertStatus(429)->assertHeader('Retry-After');
+    $this->post('/contact', ['b_website' => 'spam'])->assertRedirect('/investor-relations#inquiry-form')->assertHeader('Retry-After');
     $this->travel(23)->hours();
-    $this->post('/contact', ['b_website' => 'spam'])->assertStatus(429);
+    $this->post('/contact', ['b_website' => 'spam'])->assertRedirect('/investor-relations#inquiry-form')->assertSessionHas('error');
     $this->travel(2)->hours();
     $this->post('/contact', ['b_website' => 'spam'])->assertRedirect();
     Mail::assertNothingOutgoing();
@@ -112,4 +112,69 @@ test('failed mail does not prevent retrying the same inquiry', function () {
     $this->post('/investor-relations', inquiryPayload())->assertSessionHas('error');
     Mail::shouldReceive('send')->once()->andReturn(null);
     $this->post('/investor-relations', inquiryPayload())->assertSessionHas('success');
+});
+
+test('throttled visitors return to the form with safe retained input and an English message', function () {
+    Mail::fake();
+    for ($attempt = 0; $attempt < 8; $attempt++) {
+        $this->post('/investor-relations', ['b_website' => 'spam'])->assertRedirect();
+    }
+
+    $payload = inquiryPayload();
+    $payload['first_name'] = '<script>alert(1)</script>';
+    $payload['unexpected'] = 'do not retain';
+    $this->post('/contact', $payload)->assertRedirect('/investor-relations#inquiry-form')
+        ->assertHeader('Retry-After')
+        ->assertSessionHas('error', fn ($message) => str_contains($message, "You've reached the inquiry limit."))
+        ->assertSessionHas('_old_input.email', 'visitor@example.com')
+        ->assertSessionMissing('_old_input.cf-turnstile-response')
+        ->assertSessionMissing('_old_input.unexpected');
+
+    $this->get('/investor-relations')->assertOk()->assertSee('role="alert"', false)
+        ->assertSee('inquiry limit')->assertSee('&lt;script&gt;alert(1)&lt;/script&gt;', false)
+        ->assertDontSee('<script>alert(1)</script>', false);
+    Mail::assertNothingOutgoing();
+});
+
+test('throttled JSON clients still receive status 429 and retry information', function () {
+    Mail::fake();
+    for ($attempt = 0; $attempt < 8; $attempt++) {
+        $this->post('/investor-relations', ['b_website' => 'spam'])->assertRedirect();
+    }
+    $this->postJson('/investor-relations', inquiryPayload())->assertStatus(429)
+        ->assertHeader('Retry-After')->assertJsonStructure(['message', 'retry_after']);
+    Mail::assertNothingOutgoing();
+});
+
+test('a customer can send eight inquiries but changing IP cannot bypass the daily customer limit', function () {
+    config(['inquiries.turnstile.enabled' => false]);
+    Mail::shouldReceive('send')->times(9);
+    for ($number = 1; $number <= 8; $number++) {
+        $payload = inquiryPayload('Customer message '.$number);
+        $payload['email'] = $number % 2 ? 'visitor@example.com' : 'VISITOR@example.com';
+        $this->withServerVariables(['REMOTE_ADDR' => '192.0.2.'.$number])
+            ->post('/investor-relations', $payload)->assertSessionHas('success');
+    }
+
+    $this->withServerVariables(['REMOTE_ADDR' => '192.0.2.9'])
+        ->post('/contact', inquiryPayload('Customer message 9'))
+        ->assertRedirect('/investor-relations#inquiry-form')->assertHeader('Retry-After')->assertSessionHas('error');
+
+    $this->travel(25)->hours();
+    $this->withServerVariables(['REMOTE_ADDR' => '192.0.2.10'])
+        ->post('/investor-relations', inquiryPayload('Customer message 10'))->assertSessionHas('success');
+});
+
+test('changing customer email cannot bypass the eight attempt IP limit', function () {
+    config(['inquiries.turnstile.enabled' => false]);
+    Mail::shouldReceive('send')->times(8);
+    for ($number = 1; $number <= 8; $number++) {
+        $payload = inquiryPayload('IP message '.$number);
+        $payload['email'] = 'visitor'.$number.'@example.com';
+        $this->post('/investor-relations', $payload)->assertSessionHas('success');
+    }
+
+    $payload['email'] = 'another@example.com';
+    $this->post('/contact', $payload)->assertRedirect('/investor-relations#inquiry-form')
+        ->assertHeader('Retry-After')->assertSessionHas('error');
 });

@@ -14,6 +14,6 @@ Route::permanentRedirect('/services', '/collection');
 Route::view('/bespoke', 'bespoke')->name('bespoke');
 
 Route::get('/investor-relations', [ContactController::class, 'index'])->name('contact');
-Route::post('/investor-relations', [ContactController::class, 'store'])->middleware('throttle:3,1440')->name('contact.store');
-Route::post('/contact', [ContactController::class, 'store'])->middleware('throttle:3,1440');
+Route::post('/investor-relations', [ContactController::class, 'store'])->middleware('throttle:8,1440')->name('contact.store');
+Route::post('/contact', [ContactController::class, 'store'])->middleware('throttle:8,1440');
 Route::get('/contact', fn () => redirect()->route('contact', status: 301));

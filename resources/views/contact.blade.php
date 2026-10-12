@@ -18,7 +18,7 @@
 
 <section class="section investor-section @if(config('inquiries.turnstile.enabled')) investor-section--verified @endif">
     <div class="shell investor-grid">
-        <div class="consultation-card" data-reveal>
+        <div class="consultation-card" id="inquiry-form" data-reveal>
             <h2>Schedule a Consultation</h2>
             <div class="title-rule title-rule--left" aria-hidden="true"></div>
 
@@ -26,7 +26,7 @@
                 <div class="form-alert form-alert--success">{{ session('success') }}</div>
             @endif
             @if(session('error'))
-                <div class="form-alert form-alert--error">{{ session('error') }}</div>
+                <div class="form-alert form-alert--error" role="alert">{{ session('error') }}</div>
             @endif
             @if($errors->any())
                 <div class="form-alert form-alert--error">Please review the highlighted fields and try again.</div>
