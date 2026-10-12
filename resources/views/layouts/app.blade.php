@@ -96,7 +96,7 @@
             </div>
             <div>
                 <h3>Contact Info</h3>
-                <p>Archiepiskopou Makariou III, Limassol</p>
+                <p>13 Tepeleniou Str., Tepelenio Court, 2nd &amp; 3rd floor, 8010 Paphos, Cyprus</p>
                 <a href="mailto:info@roxelinvest.com">info@roxelinvest.com</a>
                 <nav class="mobile-only footer-mobile-nav" aria-label="Footer navigation">
                     <div><a href="{{ route('home') }}">Home</a> / <a href="{{ route('about') }}">Our DNA</a> / <a href="{{ route('services') }}">The Collection</a></div>

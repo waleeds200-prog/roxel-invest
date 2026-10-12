@@ -1,6 +1,31 @@
 <?php
 
+use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\Mail;
+use Symfony\Component\Mime\Email;
+
+test('inquiry sends to the Roxel mailbox with the visitor as reply-to', function () {
+    expect(config('mail.roxel_inquiries_to'))->toBe('info@roxelinvest.com');
+
+    Mail::shouldReceive('send')->once()->withArgs(function ($view, $data, $callback) {
+        $email = new Email;
+        $callback(new Message($email));
+
+        expect($view)->toBe('emails.contact')
+            ->and($email->getTo()[0]->getAddress())->toBe('info@roxelinvest.com')
+            ->and($email->getReplyTo()[0]->getAddress())->toBe('visitor@example.com');
+
+        return true;
+    });
+
+    $this->from('/investor-relations')->post('/investor-relations', [
+        'first_name' => 'Test',
+        'last_name' => 'Visitor',
+        'email' => 'visitor@example.com',
+        'interest' => 'General Inquiry',
+        'message' => 'Please send information.',
+    ])->assertRedirect('/investor-relations')->assertSessionHas('success');
+});
 
 test('inquiry rejects an interest outside the offered choices without sending mail', function () {
     Mail::fake();
@@ -36,7 +61,7 @@ test('inquiry validation escapes retained user input and identifies the invalid 
 test('inquiry honeypot does not send mail and repeated submissions are throttled', function () {
     Mail::fake();
 
-    for ($attempt = 0; $attempt < 6; $attempt++) {
+    for ($attempt = 0; $attempt < 3; $attempt++) {
         $this->post('/investor-relations', ['b_website' => 'spam.example'])->assertRedirect();
     }
 

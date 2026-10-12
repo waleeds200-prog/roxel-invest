@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\InquiryProtection;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
@@ -16,7 +18,7 @@ class ContactController extends Controller
         return view('contact');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request, InquiryProtection $protection): RedirectResponse
     {
         if ($request->filled('b_website')) {
             return back()->with('success', 'Thank you. Your inquiry has been received.');
@@ -36,6 +38,9 @@ class ContactController extends Controller
             'message' => ['required', 'string', 'max:3000'],
         ]);
 
+        $protection->verifyVisitor($request);
+        $reservation = $protection->reserve($data);
+
         try {
             Mail::send('emails.contact', ['inquiryData' => $data], function ($message) use ($data) {
                 $message->to(config('mail.roxel_inquiries_to', 'info@roxelinvest.com'))
@@ -45,9 +50,9 @@ class ContactController extends Controller
 
             return back()->with('success', 'Thank you. Your inquiry has been received.');
         } catch (\Throwable $exception) {
+            Cache::forget($reservation);
             Log::error('Roxel Invest contact form failed', [
-                'exception' => $exception->getMessage(),
-                'email' => $data['email'] ?? null,
+                'exception' => $exception::class,
             ]);
 
             return back()

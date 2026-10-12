@@ -4483,6 +4483,13 @@ body.collection-lightbox-open { overflow: hidden; }
 
 
 /* Desktop scroll header: preserve the opening layout, compact after scrolling. */
+@media (min-width: 1101px) {
+    .page-investor .investor-section--verified {
+        height: calc(54.2vw + 170px);
+        min-height: calc(54.2vw + 170px);
+    }
+}
+
 @media (min-width: 1101px) and (min-height: 421px) {
     body[class] .site-header,
     body[class] .site-header.is-scrolled {

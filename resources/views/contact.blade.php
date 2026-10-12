@@ -16,7 +16,7 @@
     </div>
 </section>
 
-<section class="section investor-section">
+<section class="section investor-section @if(config('inquiries.turnstile.enabled')) investor-section--verified @endif">
     <div class="shell investor-grid">
         <div class="consultation-card" data-reveal>
             <h2>Schedule a Consultation</h2>
@@ -73,7 +73,15 @@
                     <textarea name="message" rows="5" placeholder="Notes" data-mobile-placeholder="How can we help?" required maxlength="3000" @error('message') aria-invalid="true" aria-describedby="message-error" @enderror>{{ old('message') }}</textarea>
                     @error('message')<span id="message-error" class="field-error">{{ $message }}</span>@enderror
                 </label>
-                <button class="button button--navy button--full" type="submit">Submit Inquiry</button>
+                @if(config('inquiries.turnstile.enabled'))
+                    @if(config('inquiries.turnstile.site_key') && config('inquiries.turnstile.secret_key'))
+                        <div class="cf-turnstile" data-sitekey="{{ config('inquiries.turnstile.site_key') }}" data-action="contact" data-size="compact" data-appearance="interaction-only" data-theme="light"></div>
+                    @else
+                        <p class="field-error">Online inquiries are temporarily unavailable. Please email <a href="mailto:info@roxelinvest.com">info@roxelinvest.com</a>.</p>
+                    @endif
+                    @error('cf-turnstile-response')<p class="field-error" role="alert">{{ $message }}</p>@enderror
+                @endif
+                <button class="button button--navy button--full" type="submit" @disabled(config('inquiries.turnstile.enabled') && (!config('inquiries.turnstile.site_key') || !config('inquiries.turnstile.secret_key')))>Submit Inquiry</button>
             </form>
         </div>
 
@@ -83,7 +91,7 @@
                 <span class="contact-item__icon" aria-hidden="true">
                     <svg viewBox="0 0 32 32"><path d="M16 29s8-9.2 8-17a8 8 0 1 0-16 0c0 7.8 8 17 8 17Z" fill="currentColor"/><circle cx="16" cy="12" r="3.2" fill="#fff"/></svg>
                 </span>
-                <div><b>Cyprus Office</b><p>Archiepiskopou Makariou III<br>Limassol, Cyprus</p></div>
+                <div><b>Cyprus Office</b><p>13 Tepeleniou Str., Tepelenio Court,<br>2nd &amp; 3rd floor, 8010 Paphos, Cyprus</p></div>
             </div>
             <div class="contact-item">
                 <span class="contact-item__icon" aria-hidden="true">
@@ -91,13 +99,13 @@
                 </span>
                 <div><b>Direct Inquiries</b><p><a href="mailto:info@roxelinvest.com">info@roxelinvest.com</a></p></div>
             </div>
-            <div class="contact-item">
-                <span class="contact-item__icon" aria-hidden="true">
-                    <svg viewBox="0 0 32 32"><path d="M8.2 3.5 14 10l-3.5 4.2c2.3 4.5 4.8 7 9.3 9.3L24 20l6.5 5.8-3.4 4.1C14.2 31.2.8 17.8 2.1 4.9Z" fill="currentColor"/></svg>
-                </span>
-                <div><b>Telephone</b><p>+000 000 25 357</p></div>
-            </div>
         </div>
     </div>
 </section>
 @endsection
+
+@if(config('inquiries.turnstile.enabled') && config('inquiries.turnstile.site_key') && config('inquiries.turnstile.secret_key'))
+    @push('scripts')
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    @endpush
+@endif

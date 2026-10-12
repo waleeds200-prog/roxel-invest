@@ -16,6 +16,8 @@ return [
 
     'default' => env('MAIL_MAILER', 'log'),
 
+    'roxel_inquiries_to' => 'info@roxelinvest.com',
+
     /*
     |--------------------------------------------------------------------------
     | Mailer Configurations
