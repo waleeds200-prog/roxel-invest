@@ -16,7 +16,7 @@
                     language: verification.dataset.language,
                     theme: verification.dataset.theme,
                     size,
-                    appearance: 'interaction-only',
+                    appearance: 'always',
                 });
             };
             renderVerification();
