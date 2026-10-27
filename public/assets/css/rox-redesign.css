@@ -1,7 +1,10 @@
 /* Legal documents retain the site's navy, gold and editorial typography. */
 .page-legal .legal-header {
     padding: 176px 0 60px;
-    background: var(--navy);
+    background-color: var(--navy);
+    background-image: linear-gradient(90deg, rgba(7, 17, 41, .9), rgba(7, 17, 41, .64)), url("../rox2026/images/coastal-sophistication.webp");
+    background-size: cover;
+    background-position: center 52%;
     color: var(--paper);
     border-bottom: 3px solid var(--gold);
 }
@@ -16,15 +19,9 @@
     line-height: 1.12;
     text-wrap: balance;
 }
-.page-legal .legal-header .title-rule { margin: 26px 0; }
-.page-legal .legal-header__company {
-    margin: 0 0 14px;
-    font-size: 15px;
-    line-height: 1.7;
-}
-.page-legal .legal-header__company strong { font-weight: 500; }
+.page-legal .legal-header .title-rule { margin: 26px 0 0; }
 .page-legal .legal-header__version {
-    margin: 0;
+    margin: 22px 0 0;
     color: var(--gold-soft);
     font-size: 13px;
     line-height: 1.6;
@@ -83,8 +80,7 @@
     outline-offset: 4px;
 }
 @media (max-width: 560px) {
-    body.page-legal .legal-header { padding: 44px 0 40px; background: var(--mobile-navy); }
-    body.page-legal main .legal-header__company { font-size: 15px; line-height: 1.7; }
+    body.page-legal .legal-header { padding: 44px 0 40px; background-position: 58% center; }
     body.page-legal main .legal-header__version { font-size: 13px; line-height: 1.6; }
     body.page-legal .legal-body { padding-block: 40px 56px; }
     body.page-legal main .legal-section h2 { font-size: 27px; line-height: 1.25; }

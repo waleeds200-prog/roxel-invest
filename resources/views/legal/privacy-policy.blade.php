@@ -1,9 +1,8 @@
 <header class="legal-header">
     <div class="shell">
         <h1 id="legal-title">Privacy Policy</h1>
-        <div class="title-rule" aria-hidden="true"></div>
-        <p class="legal-header__company"><strong>Roxel Innovative Investment Ltd (“Roxel Invest”, “we”, “us” or “our”)</strong></p>
         <p class="legal-header__version">Last updated: October 22, 2026 · Version 1.0</p>
+        <div class="title-rule" aria-hidden="true"></div>
     </div>
 </header>
 <div class="legal-body shell">
