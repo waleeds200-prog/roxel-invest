@@ -104,6 +104,11 @@
                 </nav>
             </div>
         </div>
+        <nav class="footer-legal-nav" aria-label="Legal information">
+            <a href="{{ route('legal.terms') }}" @if(request()->routeIs('legal.terms')) aria-current="page" @endif>Terms and Conditions</a>
+            <a href="{{ route('legal.privacy') }}" @if(request()->routeIs('legal.privacy')) aria-current="page" @endif>Privacy Policy</a>
+            <a href="{{ route('legal.investment') }}" @if(request()->routeIs('legal.investment')) aria-current="page" @endif>Investment Terms and Conditions</a>
+        </nav>
     </footer>
 
     <script src="{{ asset('assets/js/rox-redesign.js') }}?v={{ filemtime(public_path('assets/js/rox-redesign.js')) }}" defer></script>
