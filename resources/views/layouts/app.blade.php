@@ -24,7 +24,7 @@
     <link rel="preload" as="font" href="{{ asset('assets/rox2026/fonts/PERB____.TTF') }}" type="font/ttf" crossorigin media="(max-width: 560px)">
     @stack('head')
 </head>
-<body class="@yield('body_class')">
+<body class="site-chrome @yield('body_class')">
     <a class="skip-link" href="#main-content">Skip to content</a>
 
     <header class="site-header" id="site-header">

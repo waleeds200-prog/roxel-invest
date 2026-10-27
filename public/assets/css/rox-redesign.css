@@ -765,102 +765,7 @@ button { cursor: pointer; }
     height: 100%;
 }
 
-.page-investor .site-footer {
-    border-top: 0 !important;
-}
-
-
-.page-investor .site-footer__accent {
-    display: none !important;
-}
-
 @media (min-width: 1101px) {
-    .page-investor .site-header,
-    .page-investor .site-header.is-scrolled {
-        position: absolute !important;
-        height: 8vw !important;
-        min-height: 100px !important;
-        max-height: 150px !important;
-        background: transparent !important;
-        box-shadow: none !important;
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-    }
-
-    .page-investor .site-header__inner {
-        position: relative;
-        display: block;
-        width: 100% !important;
-        max-width: none !important;
-        height: 100%;
-        margin: 0 !important;
-    }
-
-    .page-investor .brand {
-        position: absolute;
-        left: 4.009vw;
-        top: .72vw;
-        width: 9vw !important;
-        min-width: 118px;
-        max-width: 172px;
-    }
-
-    .page-investor .brand img {
-        width: 100% !important;
-        height: auto !important;
-        max-height: none !important;
-        filter: none;
-    }
-
-    .page-investor .desktop-nav {
-        position: absolute;
-        left: 40.074vw;
-        top: 4.65vw;
-        margin: 0 !important;
-        gap: 1.7vw;
-    }
-
-    .page-investor .desktop-nav a {
-        padding: 0 0 .85vw !important;
-        color: #fff;
-        font-size: 1.25vw;
-        line-height: 1;
-        font-weight: 500;
-        opacity: 1;
-        white-space: nowrap;
-    }
-
-    .page-investor .desktop-nav a::after {
-        bottom: 0;
-        width: 100%;
-        height: .22vw;
-        max-height: 4px;
-    }
-
-    .page-investor .menu-toggle {
-        position: absolute;
-        left: 90.606vw;
-        top: 4.8vw;
-        width: 1.9vw !important;
-        min-width: 35px;
-        max-width: 38px;
-        height: 1.1vw !important;
-        min-height: 20px;
-        max-height: 22px;
-        margin: 0 !important;
-        padding: 0 !important;
-        display: flex !important;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
-    .page-investor .menu-toggle span {
-        width: 100% !important;
-        height: .18vw;
-        min-height: 3px;
-        max-height: 3.5px;
-        margin: 0;
-    }
 
     .page-investor .hero--investor {
         width: 100%;
@@ -1084,42 +989,6 @@ button { cursor: pointer; }
         font-weight: 700;
         letter-spacing: .035em;
         text-transform: none;
-    }
-
-    .page-investor .site-footer {
-        position: relative;
-        min-height: 23.854167vw;
-        padding: 0 !important;
-        background: #0a1128 !important;
-    }
-
-    .page-investor .site-footer__inner {
-        width: 100% !important;
-        max-width: none !important;
-        margin: 0 !important;
-        padding: 7.76vw 0 0 14.775vw !important;
-        display: grid !important;
-        grid-template-columns: 23vw 1fr !important;
-        column-gap: 7.72vw !important;
-        align-items: start;
-    }
-
-    .page-investor .site-footer h2,
-    .page-investor .site-footer h3 {
-        margin: 0 0 .3vw !important;
-        font-family: "Perpetua", Georgia, serif;
-        font-size: 2.083333vw !important;
-        line-height: 1.1;
-        font-weight: 400 !important;
-        color: #d5a84b !important;
-    }
-
-    .page-investor .site-footer p,
-    .page-investor .site-footer a {
-        font-size: 1.145833vw !important;
-        line-height: 1.46 !important;
-        font-weight: 500;
-        color: rgb(139 143 144) !important;
     }
 }
 
@@ -1861,83 +1730,6 @@ button { cursor: pointer; }
 body.collection-lightbox-open { overflow: hidden; }
 
 @media (min-width: 1101px) {
-    .page-collection .site-header,
-    .page-collection .site-header.is-scrolled {
-        position: absolute !important;
-        height: 8vw !important;
-        min-height: 100px !important;
-        max-height: 150px !important;
-        background: transparent !important;
-        box-shadow: none !important;
-        backdrop-filter: none !important;
-    }
-    .page-collection .site-header__inner {
-        position: relative;
-        display: block;
-        width: 100% !important;
-        max-width: none !important;
-        height: 100%;
-        margin: 0 !important;
-    }
-    .page-collection .brand {
-        position: absolute;
-        left: 4.009vw;
-        top: .72vw;
-        width: 9vw !important;
-        min-width: 118px;
-        max-width: 172px;
-    }
-    .page-collection .brand img {
-        width: 100% !important;
-        height: auto !important;
-        max-height: none !important;
-        filter: none;
-    }
-    .page-collection .desktop-nav {
-        position: absolute;
-        left: 40.074vw;
-        top: 4.65vw;
-        margin: 0 !important;
-        gap: 1.7vw;
-    }
-    .page-collection .desktop-nav a {
-        padding: 0 0 .85vw !important;
-        color: #fff;
-        font-size: 1.25vw;
-        line-height: 1;
-        font-weight: 500;
-        opacity: 1;
-        white-space: nowrap;
-    }
-    .page-collection .desktop-nav a::after {
-        bottom: 0;
-        width: 100%;
-        height: .22vw;
-        max-height: 4px;
-    }
-    .page-collection .menu-toggle {
-        position: absolute;
-        left: 90.606vw;
-        top: 4.8vw;
-        width: 1.9vw !important;
-        min-width: 35px;
-        max-width: 38px;
-        height: 1.1vw !important;
-        min-height: 20px;
-        max-height: 22px;
-        margin: 0 !important;
-        padding: 0 !important;
-        display: flex !important;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-    .page-collection .menu-toggle span {
-        width: 100% !important;
-        height: .18vw;
-        min-height: 3px;
-        max-height: 3.5px;
-        margin: 0;
-    }
 
     .page-collection .hero--collection {
         width: 100%;
@@ -2303,103 +2095,12 @@ body.collection-lightbox-open { overflow: hidden; }
 
 @media (min-width: 1101px) {
     /* Neutralize legacy style.css rules on the Home page only. */
-    .page-home .site-header {
-        position: fixed !important;
-        inset: 0 0 auto 0 !important;
-        height: 9.90vw !important;
-        max-height: 190px !important;
-        min-height: 118px !important;
-        z-index: 1000 !important;
-        background: transparent !important;
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-        box-shadow: none !important;
-    }
-
-    .page-home .site-header__inner {
-        position: relative;
-        display: block;
-        width: 100% !important;
-        max-width: none !important;
-        height: 100%;
-        margin: 0 !important;
-    }
 
     /* PDF: logo bbox x=76.97..278.05, y=28.71..283.84 on 1920px artboard. */
-    .page-home .brand {
-        position: absolute;
-        left: 4.009vw;
-        top: 1.495vw;
-        width: 10.473vw !important;
-        max-width: 201.08px;
-        min-width: 126px;
-        height: auto;
-        margin: 0;
-    }
-    .page-home .brand img {
-        width: 100% !important;
-        height: auto !important;
-        max-height: none !important;
-        object-fit: contain;
-        filter: none;
-    }
 
     /* PDF nav: starts x=769.43; constant inter-item gap ≈38.4px. */
-    .page-home .desktop-nav {
-        position: absolute;
-        left: 40.074vw;
-        top: 5.20vw;
-        margin: 0 !important;
-        display: flex;
-        align-items: flex-start;
-        gap: 2vw;
-    }
-    .page-home .desktop-nav a {
-        padding: 0 0 1.25vw !important;
-        font-family: "Avenir", "Montserrat", Arial, sans-serif;
-        font-size: 1.436vw;
-        line-height: 1;
-        font-weight: 500;
-        letter-spacing: 0;
-        white-space: nowrap;
-        color: #fff !important;
-        opacity: 1 !important;
-        text-shadow: 0 1px 2px rgba(0, 0, 20, .22);
-    }
-    .page-home .desktop-nav a::after {
-        left: 0;
-        right: auto;
-        bottom: .10vw;
-        width: 100%;
-        height: .298vw;
-        max-height: 5.714px;
-        transform-origin: left;
-    }
 
     /* PDF hamburger: x=1739.64..1788.92, y=101.50..134.98. */
-    .page-home .menu-toggle {
-        position: absolute;
-        left: 90.606vw;
-        top: 5.286vw;
-        width: 2.567vw !important;
-        height: 2.0vw !important;
-        min-width: 49.28px;
-        min-height: 38px;
-        margin: 0 !important;
-        padding: 0 !important;
-        display: flex !important;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: stretch;
-    }
-    .page-home .menu-toggle span {
-        width: 100% !important;
-        height: .245vw !important;
-        max-height: 4.711px;
-        min-height: 3px;
-        margin: 0 !important;
-        background: #fff;
-    }
 
     /* Hero artboard is exactly 1920 × 1081. */
     .page-home .hero--home {
@@ -2787,20 +2488,6 @@ body.collection-lightbox-open { overflow: hidden; }
    ========================================================================== */
 
 @media (min-width: 1101px) {
-    /* HOME navbar belongs to the hero and must scroll away with it.
-       JS may still add .is-scrolled, but on Home it must not become sticky. */
-    .page-home .site-header,
-    .page-home .site-header.is-scrolled {
-        position: absolute !important;
-        inset: 0 0 auto 0 !important;
-        height: 9.90vw !important;
-        max-height: 190px !important;
-        min-height: 118px !important;
-        background: transparent !important;
-        box-shadow: none !important;
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-    }
 
     /* Keep the exact PDF placement from Pass 01, but the blade now points to
        a 4320px pre-scaled HQ raster so the browser no longer magnifies a
@@ -2984,197 +2671,9 @@ body.collection-lightbox-open { overflow: hidden; }
 
     /* Exact page-1 footer divider from the artwork:
        0..1367 gold, 10px gap, 111px gold, 10px gap, 79px gold. */
-    .page-home .site-footer {
-        position: relative;
-        min-height: 23.854167vw;
-        padding: 0 !important;
-        border-top: 0 !important;
-        background: #0a1128 !important;
-    }
-    .page-home .site-footer__accent {
-        display: none !important;
-    }
-    .page-home .site-footer__inner {
-        width: 100% !important;
-        max-width: none !important;
-        margin: 0 !important;
-        padding: 7.76vw 0 0 14.775vw !important;
-        display: grid !important;
-        grid-template-columns: 23vw 1fr !important;
-        column-gap: 7.72vw !important;
-        align-items: start;
-    }
-    .page-home .site-footer h2,
-    .page-home .site-footer h3 {
-        margin: 0 0 .30vw !important;
-        font-family: "Perpetua", Georgia, serif;
-        font-size: 2.083333vw !important; /* 40px */
-        line-height: 1.1;
-        font-weight: 400 !important;
-        color: #d5a84b !important;
-    }
-    .page-home .site-footer p,
-    .page-home .site-footer a {
-        font-family: "Avenir", "Montserrat", Arial, sans-serif;
-        font-size: 1.145833vw !important; /* 22px */
-        line-height: 1.46 !important;
-        font-weight: 500;
-        color: rgb(139 143 144) !important;
-    }
-}
-
-/* ==========================================================================\n   HOME MATCH PASS 02.1 — compact header / logo only\n   Keeps Home header non-sticky and does not affect pages 2–5.\n   ========================================================================== */
-@media (min-width: 1101px) {
-    .page-home .site-header,
-    .page-home .site-header.is-scrolled {
-        height: 124px !important;
-        min-height: 0 !important;
-        max-height: none !important;
-    }
-
-    .page-home .site-header__inner {
-        height: 124px !important;
-    }
-
-    .page-home .brand {
-        left: 4.0vw !important;
-        top: 14px !important;
-        width: 148px !important;
-        min-width: 0 !important;
-        max-width: none !important;
-    }
-
-    .page-home .brand img {
-        width: 148px !important;
-        max-height: 105px !important;
-        object-fit: contain !important;
-    }
-
-    .page-home .desktop-nav {
-        left: 40.1vw !important;
-        top: 38px !important;
-        gap: 27px !important;
-    }
-
-    .page-home .desktop-nav a {
-        padding: 0 0 12px !important;
-        font-size: 18px !important;
-        line-height: 1 !important;
-    }
-
-    .page-home .desktop-nav a::after {
-        bottom: 0 !important;
-        width: 100% !important;
-        height: 3px !important;
-    }
-
-    .page-home .menu-toggle {
-        left: auto !important;
-        right: 4.7vw !important;
-        top: 35px !important;
-        width: 36px !important;
-        min-width: 36px !important;
-        height: 27px !important;
-        min-height: 27px !important;
-    }
-
-    .page-home .menu-toggle span {
-        height: 3px !important;
-        min-height: 3px !important;
-        max-height: 3px !important;
-    }
-}
-
-/* Keep the compact relationship on large laptop widths as well. */
-@media (min-width: 1101px) and (max-width: 1550px) {
-    .page-home .brand {
-        width: 132px !important;
-        top: 12px !important;
-    }
-    .page-home .brand img {
-        width: 132px !important;
-        max-height: 96px !important;
-    }
-    .page-home .desktop-nav {
-        top: 34px !important;
-        gap: 24px !important;
-    }
-    .page-home .desktop-nav a {
-        font-size: 16px !important;
-    }
-    .page-home .menu-toggle {
-        top: 32px !important;
-        width: 32px !important;
-        min-width: 32px !important;
-        height: 24px !important;
-        min-height: 24px !important;
-    }
 }
 
 /* Restore the full-size desktop header geometry from the approved artboard. */
-@media (min-width: 1101px) {
-    .page-home .site-header,
-    .page-home .site-header.is-scrolled {
-        height: 8vw !important;
-        min-height: 100px !important;
-        max-height: 150px !important;
-    }
-
-    .page-home .site-header__inner {
-        height: 100% !important;
-    }
-
-    .page-home .brand {
-        left: 4.009vw !important;
-        top: .72vw !important;
-        width: 9vw !important;
-        min-width: 118px !important;
-        max-width: 172px !important;
-    }
-
-    .page-home .brand img {
-        width: 100% !important;
-        max-height: none !important;
-    }
-
-    .page-home .desktop-nav {
-        left: 40.074vw !important;
-        top: 4.65vw !important;
-        gap: 1.7vw !important;
-    }
-
-    .page-home .desktop-nav a {
-        padding: 0 0 .85vw !important;
-        font-size: 1.25vw !important;
-        line-height: 1 !important;
-    }
-
-    .page-home .desktop-nav a::after {
-        bottom: 0 !important;
-        width: 100% !important;
-        height: .22vw !important;
-        max-height: 4px;
-    }
-
-    .page-home .menu-toggle {
-        left: 90.606vw !important;
-        right: auto !important;
-        top: 4.8vw !important;
-        width: 1.9vw !important;
-        min-width: 35px !important;
-        max-width: 38px !important;
-        height: 1.1vw !important;
-        min-height: 20px !important;
-        max-height: 22px !important;
-        justify-content: space-between !important;
-    }
-
-    .page-home .menu-toggle span {
-        height: .18vw !important;
-        min-height: 3px !important;
-        max-height: 3.5px !important;
-    }
-}
 
 /* Mobile home hero: keep the artwork gold and show more of the source photo. */
 .page-home .hero--home .hero__motif--exact path {
@@ -3230,14 +2729,6 @@ body.collection-lightbox-open { overflow: hidden; }
 }
 
 /* Use the same long / medium / short gold footer rule as the home artwork. */
-.page-collection .site-footer {
-    border-top: 0 !important;
-}
-
-
-.page-collection .site-footer__accent {
-    display: none !important;
-}
 
 @media (min-width: 1101px) {
     .page-collection .project-card__title-row h3 {
@@ -3439,113 +2930,7 @@ body.collection-lightbox-open { overflow: hidden; }
     stroke-linejoin: round;
 }
 
-.page-dna .site-footer,
-.page-bespoke .site-footer {
-    border-top: 0 !important;
-}
-
-
-.page-dna .site-footer__accent,
-.page-bespoke .site-footer__accent {
-    display: none !important;
-}
-
 @media (min-width: 1101px) {
-    .page-dna .site-header,
-    .page-dna .site-header.is-scrolled,
-    .page-bespoke .site-header,
-    .page-bespoke .site-header.is-scrolled {
-        position: absolute !important;
-        height: 8vw !important;
-        min-height: 100px !important;
-        max-height: 150px !important;
-        background: transparent !important;
-        box-shadow: none !important;
-        backdrop-filter: none !important;
-    }
-
-    .page-dna .site-header__inner,
-    .page-bespoke .site-header__inner {
-        position: relative;
-        display: block;
-        width: 100% !important;
-        max-width: none !important;
-        height: 100%;
-        margin: 0 !important;
-    }
-
-    .page-dna .brand,
-    .page-bespoke .brand {
-        position: absolute;
-        left: 4.009vw;
-        top: .72vw;
-        width: 9vw !important;
-        min-width: 118px;
-        max-width: 172px;
-    }
-
-    .page-dna .brand img,
-    .page-bespoke .brand img {
-        width: 100% !important;
-        height: auto !important;
-        max-height: none !important;
-        filter: none;
-    }
-
-    .page-dna .desktop-nav,
-    .page-bespoke .desktop-nav {
-        position: absolute;
-        left: 40.074vw;
-        top: 4.65vw;
-        margin: 0 !important;
-        gap: 1.7vw;
-    }
-
-    .page-dna .desktop-nav a,
-    .page-bespoke .desktop-nav a {
-        padding: 0 0 .85vw !important;
-        color: #fff;
-        font-size: 1.25vw;
-        line-height: 1;
-        font-weight: 500;
-        opacity: 1;
-        white-space: nowrap;
-    }
-
-    .page-dna .desktop-nav a::after,
-    .page-bespoke .desktop-nav a::after {
-        bottom: 0;
-        width: 100%;
-        height: .22vw;
-        max-height: 4px;
-    }
-
-    .page-dna .menu-toggle,
-    .page-bespoke .menu-toggle {
-        position: absolute;
-        left: 90.606vw;
-        top: 4.8vw;
-        width: 1.9vw !important;
-        min-width: 35px;
-        max-width: 38px;
-        height: 1.1vw !important;
-        min-height: 20px;
-        max-height: 22px;
-        margin: 0 !important;
-        padding: 0 !important;
-        display: flex !important;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
-    .page-dna .menu-toggle span,
-    .page-bespoke .menu-toggle span {
-        width: 100% !important;
-        height: .18vw;
-        min-height: 3px;
-        max-height: 3.5px;
-        margin: 0;
-    }
 
     .page-dna .hero--dna,
     .page-bespoke .hero--bespoke {
@@ -3925,48 +3310,6 @@ body.collection-lightbox-open { overflow: hidden; }
     .page-bespoke .concierge__copy .button:focus-visible {
         background: #d5a84b;
         color: #0a1128;
-    }
-
-    .page-dna .site-footer,
-    .page-bespoke .site-footer {
-        position: relative;
-        min-height: 23.854167vw;
-        padding: 0 !important;
-        background: #0a1128 !important;
-    }
-
-    .page-dna .site-footer__inner,
-    .page-bespoke .site-footer__inner {
-        width: 100% !important;
-        max-width: none !important;
-        margin: 0 !important;
-        padding: 7.76vw 0 0 14.775vw !important;
-        display: grid !important;
-        grid-template-columns: 23vw 1fr !important;
-        column-gap: 7.72vw !important;
-        align-items: start;
-    }
-
-    .page-dna .site-footer h2,
-    .page-dna .site-footer h3,
-    .page-bespoke .site-footer h2,
-    .page-bespoke .site-footer h3 {
-        margin: 0 0 .3vw !important;
-        font-family: "Perpetua", Georgia, serif;
-        font-size: 2.083333vw !important;
-        line-height: 1.1;
-        font-weight: 400 !important;
-        color: #d5a84b !important;
-    }
-
-    .page-dna .site-footer p,
-    .page-dna .site-footer a,
-    .page-bespoke .site-footer p,
-    .page-bespoke .site-footer a {
-        font-size: 1.145833vw !important;
-        line-height: 1.46 !important;
-        font-weight: 500;
-        color: rgb(139 143 144) !important;
     }
 }
 
@@ -4571,6 +3914,167 @@ body.collection-lightbox-open { overflow: hidden; }
 .collection-lightbox__designs select:focus-visible {
     outline: 2px solid #e7c46d;
     outline-offset: 3px;
+}
+
+
+/* Shared desktop header and footer: homepage proportions apply to every page. Mobile and tablet use the existing shared responsive rules. */
+
+
+@media (min-width: 1101px) {
+    .site-chrome .site-header {
+        position: absolute !important;
+        inset: 0 0 auto 0 !important;
+        height: 8vw !important;
+        max-height: 150px !important;
+        min-height: 100px !important;
+        z-index: 1000 !important;
+        background: transparent !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        box-shadow: none !important;
+    }
+    .site-chrome .site-header__inner {
+        position: relative;
+        display: block;
+        width: 100% !important;
+        max-width: none !important;
+        height: 100% !important;
+        margin: 0 !important;
+    }
+    .site-chrome .brand {
+        position: absolute;
+        left: 4.009vw !important;
+        top: .72vw !important;
+        width: 9vw !important;
+        max-width: 172px !important;
+        min-width: 118px !important;
+        height: auto;
+        margin: 0;
+    }
+    .site-chrome .brand img {
+        width: 100% !important;
+        height: auto !important;
+        max-height: none !important;
+        object-fit: contain;
+        filter: none;
+    }
+    .site-chrome .desktop-nav {
+        position: absolute;
+        left: 40.074vw !important;
+        top: 4.65vw !important;
+        margin: 0 !important;
+        display: flex;
+        align-items: flex-start;
+        gap: 1.7vw !important;
+    }
+    .site-chrome .desktop-nav a {
+        padding: 0 0 .85vw !important;
+        font-family: "Avenir", "Montserrat", Arial, sans-serif;
+        font-size: 1.25vw !important;
+        line-height: 1 !important;
+        font-weight: 500;
+        letter-spacing: 0;
+        white-space: nowrap;
+        color: #fff !important;
+        opacity: 1 !important;
+        text-shadow: 0 1px 2px rgba(0, 0, 20, .22);
+    }
+    .site-chrome .desktop-nav a::after {
+        left: 0;
+        right: auto;
+        bottom: 0 !important;
+        width: 100% !important;
+        height: .22vw !important;
+        max-height: 4px;
+        transform-origin: left;
+    }
+    .site-chrome .menu-toggle {
+        position: absolute;
+        left: 90.606vw !important;
+        top: 4.8vw !important;
+        width: 1.9vw !important;
+        height: 1.1vw !important;
+        min-width: 35px !important;
+        min-height: 20px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: flex !important;
+        flex-direction: column;
+        justify-content: space-between !important;
+        align-items: stretch;
+        right: auto !important;
+        max-width: 38px !important;
+        max-height: 22px !important;
+    }
+    .site-chrome .menu-toggle span {
+        width: 100% !important;
+        height: .18vw !important;
+        max-height: 3.5px !important;
+        min-height: 3px !important;
+        margin: 0 !important;
+        background: #fff;
+    }
+    .site-chrome .site-header.is-scrolled {
+        position: absolute !important;
+        inset: 0 0 auto 0 !important;
+        height: 8vw !important;
+        max-height: 150px !important;
+        min-height: 100px !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+    .site-chrome .site-footer {
+        position: relative;
+        min-height: 23.854167vw;
+        padding: 0 !important;
+        border-top: 0 !important;
+        background: #0a1128 !important;
+    }
+    .site-chrome .site-footer__accent {
+        display: none !important;
+    }
+    .site-chrome .site-footer__inner {
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 7.76vw 0 0 14.775vw !important;
+        display: grid !important;
+        grid-template-columns: 23vw 1fr !important;
+        column-gap: 7.72vw !important;
+        align-items: start;
+    }
+    .site-chrome .site-footer h2 {
+        margin: 0 0 .30vw !important;
+        font-family: "Perpetua", Georgia, serif;
+        font-size: 2.083333vw !important;
+        line-height: 1.1;
+        font-weight: 400 !important;
+        color: #d5a84b !important;
+    }
+    .site-chrome .site-footer h3 {
+        margin: 0 0 .30vw !important;
+        font-family: "Perpetua", Georgia, serif;
+        font-size: 2.083333vw !important;
+        line-height: 1.1;
+        font-weight: 400 !important;
+        color: #d5a84b !important;
+    }
+    .site-chrome .site-footer p {
+        font-family: "Avenir", "Montserrat", Arial, sans-serif;
+        font-size: 1.145833vw !important;
+        line-height: 1.46 !important;
+        font-weight: 500;
+        color: rgb(139 143 144) !important;
+    }
+    .site-chrome .site-footer__inner a {
+        font-family: "Avenir", "Montserrat", Arial, sans-serif;
+        font-size: 1.145833vw !important;
+        line-height: 1.46 !important;
+        font-weight: 500;
+        color: rgb(139 143 144) !important;
+    }
 }
 
 
